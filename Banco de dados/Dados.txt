@@ -1,0 +1,50 @@
+tiposUsuarios
+	idTipo
+	tituloTipoUsuario
+
+usuarios
+	idUsuario
+	idTipo
+	nome	
+	email
+
+pacientes
+	idPaciente
+	idUsuario
+	dataNasciemnto
+	telefone
+	rg
+	cpf
+	endereco
+
+medico
+	idMedico
+	idUsuario
+	crm
+	idEspecialidade
+	idClinica
+
+especialidades
+	idEspecialidade
+	nome
+
+clinicas
+	idClinica
+	razãoSocial
+	nomeClinica
+	cnpj
+	endereço
+
+consultas
+	idConsulta
+	idPaciente
+	idMedico
+	dataConsulta
+	descricao
+
+situacao
+	idSitiacao
+	idConsulta
+	idpaciente
+	situacao
+

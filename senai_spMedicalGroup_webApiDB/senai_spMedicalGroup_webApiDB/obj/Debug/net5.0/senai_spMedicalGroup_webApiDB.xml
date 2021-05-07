@@ -1,0 +1,266 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>senai_spMedicalGroup_webApiDB</name>
+    </assembly>
+    <members>
+        <member name="T:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository">
+            <summary>
+            Interface responsável por ClinicaRepository
+            </summary>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository.Listar">
+            <summary>
+            Lista todas as clínicas
+            </summary>
+            <returns>Uma lista de clínicas</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository.ListarMedicos">
+            <summary>
+            Lista todas as clínicas e os médicos que pertencem a ela
+            </summary>
+            <returns>Uma lista de clínicas com os médicos</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma clínica pelo seu id
+            </summary>
+            <param name="id">Id da clinica que vai ser buscada</param>
+            <returns>A clinica buscada</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.clinica)">
+            <summary>
+            Cadastra uma nova clínica
+            </summary>
+            <param name="novaClinica">Objeto com as informações que serão cadastradas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.clinica)">
+            <summary>
+            Atualiza uma clínica passando seu id na url da requisição
+            </summary>
+            <param name="id">Id da clínica que será atualizada</param>
+            <param name="clinicaAtualizada">Objeto com as informações informadas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IClinicaRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta uma clínica existente
+            </summary>
+            <param name="id">Id da clínica que será deletada</param>
+        </member>
+        <member name="T:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository">
+            <summary>
+            Interface responsável pelo EspecialidadeRepository
+            </summary>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository.Listar">
+            <summary>
+            Lista todas as especialidades
+            </summary>
+            <returns>Uma lista de especialidade</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository.ListarMedicos">
+            <summary>
+            Lista todas as especialidade e os médicos que à tem
+            </summary>
+            <returns>Uma lista de especialidade com os médicos</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma especialidade pelo seu id
+            </summary>
+            <param name="id">Id da especialidade que será buscada</param>
+            <returns>A especialidade buscada</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.especialidade)">
+            <summary>
+            Cadastra uma nova especialidade
+            </summary>
+            <param name="novaEspecialidade">Objeto com as informações que serão cadastradas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta uma especialidade existente
+            </summary>
+            <param name="id">Id da especialidade que será deletada</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.especialidade)">
+            <summary>
+            Atualiza uma especialidade passando seu id na url da requisição
+            </summary>
+            <param name="id">Id da especialidade que será atualizada</param>
+            <param name="especialidadeAtualizada">Objeto com as informações que serão atualizadas</param>
+        </member>
+        <member name="T:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository">
+            <summary>
+            Interface responsável pelo TiposUsuarioRepository
+            </summary>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository.Listar">
+            <summary>
+            Listar os todos os tipos de usuario
+            </summary>
+            <returns>Uma lista com os tipos de usuario</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um tipo de usuario pelo seu id
+            </summary>
+            <param name="id">Id do tipo de usuario que será buscado</param>
+            <returns>O tipo de usuario buscado</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository.ListarUsuarios">
+            <summary>
+            Lista todos os tipos de usuario com os usuarios que pertencem a eles
+            </summary>
+            <returns>A lista de tipos de usuario com os usuarios</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.tiposUsuario)">
+            <summary>
+            Cadastra um novo tipo de usuario
+            </summary>
+            <param name="novoTipo">Objeto com as informações que serão cadastradas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuario
+            </summary>
+            <param name="id">Id do usuario que será deletado</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.ITiposUsuarioRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.tiposUsuario)">
+            <summary>
+            Atualiza um tipo de usuario passando o id na url da requisição
+            </summary>
+            <param name="id">Id do tipo de usuario que será atualizado</param>
+            <param name="tUsuarioAtualizado">Objeto com as informações que serão atualizadas</param>
+        </member>
+        <member name="F:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.ctx">
+            <summary>
+            Objeto contexto por onde serão chamados os métodos do EF Core
+            </summary>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.clinica)">
+            <summary>
+            Atualiza uma clínica passando seu id na url da requisição
+            </summary>
+            <param name="id">Id da clínica que será atualizada</param>
+            <param name="clinicaAtualizada">Objeto com as informações informadas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma clínica pelo seu id
+            </summary>
+            <param name="id">Id da clinica que vai ser buscada</param>
+            <returns>A clinica buscada</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.clinica)">
+            <summary>
+            Cadastra uma nova clínica
+            </summary>
+            <param name="novaClinica">Objeto com as informações que serão cadastradas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta uma clínica existente
+            </summary>
+            <param name="id">Id da clínica que será deletada</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.Listar">
+            <summary>
+            Lista todas as clínicas
+            </summary>
+            <returns>Uma lista de clínicas</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ClinicaRepository.ListarMedicos">
+            <summary>
+            Lista todas as clínicas e os médicos que pertencem a ela
+            </summary>
+            <returns>Uma lista de clínicas com os médicos</returns>
+        </member>
+        <member name="F:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.ctx">
+            <summary>
+            Objeto contexto por onde serão chamados os métodos do EF Core
+            </summary>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.especialidade)">
+            <summary>
+            Atualiza uma especialidade passando seu id na url da requisição
+            </summary>
+            <param name="id">Id da especialidade que será atualizada</param>
+            <param name="especialidadeAtualizada">Objeto com as informações que serão atualizadas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca uma especialidade pelo seu id
+            </summary>
+            <param name="id">Id da especialidade que será buscada</param>
+            <returns>A especialidade buscada</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.especialidade)">
+            <summary>
+            Cadastra uma nova especialidade
+            </summary>
+            <param name="novaEspecialidade">Objeto com as informações que serão cadastradas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta uma especialidade existente
+            </summary>
+            <param name="id">Id da especialidade que será deletada</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.Listar">
+            <summary>
+            Lista todas as especialidades
+            </summary>
+            <returns>Uma lista de especialidade</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.EspecialidadeRepository.ListarMedicos">
+            <summary>
+            Lista todas as especialidade e os médicos que à tem
+            </summary>
+            <returns>Uma lista de especialidade com os médicos</returns>
+        </member>
+        <member name="F:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.ctx">
+            <summary>
+            Objeto contexto por onde serão chamados os métodos do EF Core
+            </summary>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.tiposUsuario)">
+            <summary>
+            Atualiza um tipo de usuario passando o id na url da requisição
+            </summary>
+            <param name="id">Id do tipo de usuario que será atualizado</param>
+            <param name="tUsuarioAtualizado">Objeto com as informações que serão atualizadas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.BuscarPorId(System.Int32)">
+            <summary>
+            Busca um tipo de usuario pelo seu id
+            </summary>
+            <param name="id">Id do tipo de usuario que será buscado</param>
+            <returns>O tipo de usuario buscado</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.tiposUsuario)">
+            <summary>
+            Cadastra um novo tipo de usuario
+            </summary>
+            <param name="novoTipo">Objeto com as informações que serão cadastradas</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.Deletar(System.Int32)">
+            <summary>
+            Deleta um usuario
+            </summary>
+            <param name="id">Id do usuario que será deletado</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.Listar">
+            <summary>
+            Listar os todos os tipos de usuario
+            </summary>
+            <returns>Uma lista com os tipos de usuario</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.TiposUsuarioRepository.ListarUsuarios">
+            <summary>
+            Lista todos os tipos de usuario com os usuarios que pertencem a eles
+            </summary>
+            <returns>A lista de tipos de usuario com os usuarios</returns>
+        </member>
+    </members>
+</doc>
