@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\10\\Documents\\Curso\\SENAI_2S\\2021-1S-2D\\sprint_2_backend\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj": {}
+    "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj": {}
   },
   "projects": {
-    "C:\\Users\\10\\Documents\\Curso\\SENAI_2S\\2021-1S-2D\\sprint_2_backend\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj": {
+    "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\10\\Documents\\Curso\\SENAI_2S\\2021-1S-2D\\sprint_2_backend\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
+        "projectUniqueName": "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
         "projectName": "senai_spMedicalGroup_webApiDB",
-        "projectPath": "C:\\Users\\10\\Documents\\Curso\\SENAI_2S\\2021-1S-2D\\sprint_2_backend\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
+        "projectPath": "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
         "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\10\\Documents\\Curso\\SENAI_2S\\2021-1S-2D\\sprint_2_backend\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\obj\\",
+        "outputPath": "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -89,7 +89,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

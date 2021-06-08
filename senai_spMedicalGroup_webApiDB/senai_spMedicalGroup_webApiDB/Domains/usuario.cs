@@ -26,6 +26,7 @@ namespace senai_spMedicalGroup_webApiDB.Domains
         public string email { get; set; }
 
         [Required(ErrorMessage = "A data de nascimento do usuario é obrigatório")]
+        [DataType(DataType.Date)]
         public DateTime dataNascimento { get; set; }
 
         [Required(ErrorMessage = "A senha é obrigatória")]

@@ -27,7 +27,7 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
             especialidade especialidadeBuscada = BuscarPorId(id);
 
             //Verifica se o nome da especialidade foi informada
-            if (especialidadeBuscada.nome != null)
+            if (especialidadeAtualizada.nome != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 especialidadeBuscada.nome = especialidadeAtualizada.nome;
@@ -70,11 +70,8 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// <param name="id">Id da especialidade que será deletada</param>
         public void Deletar(int id)
         {
-            //Busca a habilidade pelo seu id
-            especialidade especialidadeBuscada = BuscarPorId(id);
-
-            //Remove a especialidade que foi buscada
-            ctx.especialidades.Remove(especialidadeBuscada);
+            //Remove a especialidade que está sendo buscada
+            ctx.especialidades.Remove(BuscarPorId(id));
 
             //Salva as alterações no banco de dados
             ctx.SaveChanges();

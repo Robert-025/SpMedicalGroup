@@ -11,7 +11,7 @@ namespace senai_spMedicalGroup_webApiDB.Domains
         public int idConsulta { get; set; }
         public int? idPaciente { get; set; }
 
-        [Required(ErrorMessage = "O ID do médico precisa ser informado")]
+        //[Required(ErrorMessage = "O ID do médico precisa ser informado")]
         public int? idMedico { get; set; }
 
         [Required(ErrorMessage = "A data e a hora da consulta são obrigatórias")]

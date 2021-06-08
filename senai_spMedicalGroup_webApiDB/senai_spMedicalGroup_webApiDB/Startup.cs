@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using Newtonsoft.Json;
 using System;
@@ -44,6 +45,42 @@ namespace senai_spMedicalGroup_webApiDB
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+
+            // Define a forma de autenticação
+            services
+               .AddAuthentication(options =>
+               {
+                   options.DefaultAuthenticateScheme = "JwtBearer";
+                   options.DefaultChallengeScheme = "JwtBearer";
+               })
+
+               .AddJwtBearer("JwtBearer", options =>
+               {
+                   options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                        // define que o issuer será validado
+                        ValidateIssuer = true,
+
+                        // define que o audience será validado
+                        ValidateAudience = true,
+
+                        // define que o tempo de vida será validado
+                        ValidateLifetime = true,
+
+                        // forma de criptografia e a chave de autenticação
+                        IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("sp-medical-group-autenticacao")),
+
+                        // verifica o tempo de expiração do token
+                        ClockSkew = TimeSpan.FromMinutes(30),
+
+                        // define o nome da issuer, de onde está vindo
+                        ValidIssuer = "spMedicalGroup.webApi",
+
+                        // define o nome da audience, para onde está indo
+                        ValidAudience = "spMedicalGroup.webApi"
+                   };
+               });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -54,6 +91,19 @@ namespace senai_spMedicalGroup_webApiDB
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseRouting();            
+
+            //Habilita a autenticação
+            app.UseAuthentication();
+
+            //Habilita a autorização
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
             //Habilita o uso do swagger
             app.UseSwagger();
 
@@ -63,15 +113,9 @@ namespace senai_spMedicalGroup_webApiDB
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpMedical.webApi v1");
                 c.RoutePrefix = string.Empty;
-            });
+            });       
 
-
-            app.UseRouting();
-
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            
         }
     }
 }

@@ -27,42 +27,42 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
             clinica clinicaBuscada = BuscarPorId(id);
 
             //Verifica se o campo razaoSocial novo foi informado
-            if (clinicaBuscada.razaoSocial != null)
+            if (clinicaAtualizada.razaoSocial != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 clinicaBuscada.razaoSocial = clinicaAtualizada.razaoSocial;
             }
 
             //Verifica se o campo nomeClinica novo foi informado
-            if (clinicaBuscada.nomeClinica != null)
+            if (clinicaAtualizada.nomeClinica != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 clinicaBuscada.nomeClinica = clinicaAtualizada.nomeClinica;
             }
 
             //Verifica se o campo endereco novo foi informado
-            if (clinicaBuscada.endereco != null)
+            if (clinicaAtualizada.endereco != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 clinicaBuscada.endereco = clinicaAtualizada.endereco;
             }
 
             //Verifica se o campo cnpj novo foi informado
-            if (clinicaBuscada.cnpj != null)
+            if (clinicaAtualizada.cnpj != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 clinicaBuscada.cnpj = clinicaAtualizada.cnpj;
             }
 
             //Verifica se o campo horarioAbertura novo foi informado
-            if (clinicaBuscada.horarioAbertura != null)
+            if (clinicaAtualizada.horarioAbertura != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 clinicaBuscada.horarioAbertura = clinicaAtualizada.horarioAbertura;
             }
 
             //Verifica se o campo horarioFechamento novo foi informado
-            if (clinicaBuscada.horarioFechamento != null)
+            if (clinicaAtualizada.horarioFechamento != null)
             {
                 //Caso tenha sido, atribui o novo valor ao campo
                 clinicaBuscada.horarioFechamento = clinicaAtualizada.horarioFechamento;
@@ -105,11 +105,8 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// <param name="id">Id da clínica que será deletada</param>
         public void Deletar(int id)
         {
-            //Busca a clínica de acordo com o id informado
-            clinica clinicaBuscada = BuscarPorId(id);
-
-            //Remove a clinica que foi buscada
-            ctx.clinicas.Remove(clinicaBuscada);
+            //Remove a clinica que esta sendo buscada
+            ctx.clinicas.Remove(BuscarPorId(id));
 
             //Salva as alterações no banco de dados
             ctx.SaveChanges();

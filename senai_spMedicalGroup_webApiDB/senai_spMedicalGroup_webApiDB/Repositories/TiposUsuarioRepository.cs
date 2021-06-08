@@ -70,11 +70,8 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// <param name="id">Id do usuario que será deletado</param>
         public void Deletar(int id)
         {
-            //Busca o tipo de usuario pelo seu id
-            tiposUsuario tipoBuscado = BuscarPorId(id);
-
-            //Remove o tipo de usuario que foi buscado
-            ctx.tiposUsuarios.Remove(tipoBuscado);
+            //Remove o tipo de usuario que está sendo buscado
+            ctx.tiposUsuarios.Remove(BuscarPorId(id));
 
             //Salva as alterações no banco de dados
             ctx.SaveChanges();
@@ -84,7 +81,7 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// Listar os todos os tipos de usuario
         /// </summary>
         /// <returns>Uma lista com os tipos de usuario</returns>
-        public List<tiposUsuario> Listar()
+        public List<tiposUsuario> ListarUsuarios()
         {
             //Retorna uma lista de tipos de habilidades com suas habilidades
             return ctx.tiposUsuarios.Include(t => t.usuarios).ToList();
@@ -94,7 +91,7 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// Lista todos os tipos de usuario com os usuarios que pertencem a eles
         /// </summary>
         /// <returns>A lista de tipos de usuario com os usuarios</returns>
-        public List<tiposUsuario> ListarUsuarios()
+        public List<tiposUsuario> Listar()
         {
             //Retorna uma lista com todas as informações dos tiposUsuarios
             return ctx.tiposUsuarios.ToList();
