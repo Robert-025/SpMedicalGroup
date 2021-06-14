@@ -141,7 +141,7 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// </summary>
         /// <param name="crmMedico">Nome do médico que será atrelado a consulta</param>
         /// <returns>O médico buscado</returns>
-        public medico BuscarPorNome(string crmMedico)
+        public medico BuscarPorCrm(string crmMedico)
         {
             //Procura no lista médicos um médico com o nome informado
             return ctx.medicos.FirstOrDefault(n => n.crm == crmMedico);
@@ -153,10 +153,10 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// </summary>
         /// <param name="cpf">RG do paciente que será buscado</param>
         /// <returns>O paciente buscado</returns>
-        public paciente BuscarPorRg(string cpf)
+        public paciente BuscarPorCpf(string cpf)
         {
             //Procura na lista pacientes um RG como o informado
-            return ctx.pacientes.First(p => p.cpf == cpf);
+            return ctx.pacientes.FirstOrDefault(p => p.cpf == cpf);
         }
 
         /// <summary>
@@ -210,7 +210,13 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         public List<consulta> ListarConsultas()
         {
             //Retorna a lista de consultas
-            return ctx.consultas.ToList();
+            return ctx.consultas
+                    .Include(c => c.idMedicoNavigation)
+                    .Include(c => c.idPacienteNavigation)
+                    .Include(c => c.idSituacaoNavigation)
+                    .Include(c => c.idMedicoNavigation.idUsuarioNavigation)
+                    .Include(c => c.idPacienteNavigation.idUsuarioNavigation)
+                    .ToList();
         }
 
         /// <summary>
@@ -231,6 +237,37 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
                     //Estabelece como parâmetro de consulta o ID do usuario recebido
                     .Where(c => c.idPaciente == id)
                     .ToList();
+        }
+
+        public void AddDescricao(int id, string descricao)
+        {
+            // Busca a primeira presença para o ID informado e armazena no objeto consultaBuscada
+            consulta consultaBuscada = ctx.consultas
+
+                //Adiciona na busca as informações do paciente que participa da consulta
+                .Include(c => c.idPacienteNavigation)
+                
+                //Adiciona na busca as informações do médico que participa da consulta
+                .Include(c => c.idMedicoNavigation)
+
+                //Adiciona na busca as informações da situação da consulta
+                .Include(c => c.idSituacaoNavigation)
+
+                //Método que procura na lista idConsulta a consulta com o ID informado
+                .FirstOrDefault(c => c.idConsulta == id);
+
+                //Verififca se foi passada alguma descrição
+                if (descricao != null)
+                {
+                    //Caso tenha sido passada, atualiza o campo descricao
+                    consultaBuscada.descricao = descricao;
+                }
+
+                //Atualiza a consultaBuscada com as novas informações passadas
+                ctx.consultas.Update(consultaBuscada);
+
+                //Salva as alterações no banco de dados
+                ctx.SaveChanges();
         }
     }
 }

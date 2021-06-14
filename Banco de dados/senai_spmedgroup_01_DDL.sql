@@ -86,3 +86,6 @@ ADD horarioFechamento TIME;
 ALTER TABLE usuarios
 ADD senha VARCHAR(20);
 -- Não coloquei not null porque não permitiu, e esqueci de colocar
+
+ALTER TABLE consultas
+ADD descricao VARCHAR (500);

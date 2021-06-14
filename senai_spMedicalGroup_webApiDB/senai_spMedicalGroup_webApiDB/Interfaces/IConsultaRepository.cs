@@ -53,9 +53,9 @@ namespace senai_spMedicalGroup_webApiDB.Interfaces
         /// <summary>
         /// Busca um médico pelo seu nome para inserir ele no cadastro da consulta
         /// </summary>
-        /// <param name="nomeMedico">Nome do médico que será atrelado a consulta</param>
+        /// <param name="crmMedico">Nome do médico que será atrelado a consulta</param>
         /// <returns>O médico buscado</returns>
-        medico BuscarPorNome(string nomeMedico);
+        medico BuscarPorCrm(string crmMedico);
 
         /// <summary>
         /// Cadastra uma nova consulta
@@ -66,9 +66,9 @@ namespace senai_spMedicalGroup_webApiDB.Interfaces
         /// <summary>
         /// Busca um paciente pelo seu rg
         /// </summary>
-        /// <param name="rg">RG do paciente que será buscado</param>
+        /// <param name="cpf">RG do paciente que será buscado</param>
         /// <returns>O paciente buscado</returns>
-        paciente BuscarPorRg(string rg);
+        paciente BuscarPorCpf(string cpf);
 
         /// <summary>
         /// Atualiza uma consulta passando seu id na url
@@ -76,5 +76,12 @@ namespace senai_spMedicalGroup_webApiDB.Interfaces
         /// <param name="id">ID da consulta que será atualizada</param>
         /// <param name="consultaAtualizada">Objeto com asnovas informações</param>
         void Atualizar(int id, consulta consultaAtualizada);
+
+        /// <summary>
+        /// Adiciona uma descrição a consulta desejada
+        /// </summary>
+        /// <param name="id">Id da consulta que terá uma descrição adicionada</param>
+        /// <param name="descricao">Parâmetro com a descrição que será adicionada</param>
+        void AddDescricao(int id, string descricao);
     }
 }

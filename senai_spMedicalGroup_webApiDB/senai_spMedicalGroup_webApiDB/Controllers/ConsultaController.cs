@@ -78,7 +78,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// </summary>
         /// <param name="novaConsulta">Objeto com as informações que serão cadastradas</param>
         /// <returns>Um status code 201 - Created</returns>
-        [Authorize (Roles = "1")]
+        //[Authorize (Roles = "1")]
         [HttpPost]
         public IActionResult Post(consulta novaConsulta)
         {
@@ -124,7 +124,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// </summary>
         /// <param name="id">ID da consulta que será deletada</param>
         /// <returns>Um status code 204 - NoContent</returns>
-        [Authorize(Roles = "1")]
+        //[Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -147,7 +147,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// Lista todas as consultas de um usuario
         /// </summary>
         /// <returns>Uma lista de consultas com um status code 200 - OK</returns>
-        [Authorize(Roles = "2, 3")]
+        //[Authorize(Roles = "2, 3")]
         [HttpGet("minhas")]
         public IActionResult GetMinhas()
         {
@@ -169,11 +169,11 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
             }
         }
 
-        /// <summary>
-        /// Inscreve o paciente logado em um evento
-        /// </summary>
-        /// <param name="idConsulta">ID do evento que o Paciente irá se inscrever</param>
-        /// <returns>Um status code 201 - Created</returns>
+        // /// <summary>
+        // /// Inscreve o paciente logado em um evento
+        // /// </summary>
+        // /// <param name="idConsulta">ID do evento que o Paciente irá se inscrever</param>
+        // /// <returns>Um status code 201 - Created</returns>
         /*[Authorize(Roles = "1")]
         [HttpPost("inscricao/{idConsulta}")]
         public IActionResult Join(int idConsulta)
@@ -208,34 +208,39 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         }*/
 
         /// <summary>
-        /// Inscreve 
+        /// Inscreve um médico e um paciente em uma consulta já criada
         /// </summary>
-        /// <param name="idConsultaa"></param>
-        /// <param name="crmMedico"></param>
-        /// <param name="cpfPaciente"></param>
-        /// <returns></returns>
-        [Authorize(Roles = "1")]
-        [HttpPost("inscricao/{idConsultaa}")]
-        public IActionResult Join(int idConsultaa, string crmMedico, string cpfPaciente)
+        /// <param name="crmMedico">CRM do médico que será atrelado a consulta</param>
+        /// <param name="cpfPaciente">CPF do paciente que será atrelado a consulta</param>
+        /// <returns>Um status code 201 - Created</returns>
+        //[Authorize(Roles = "1")]
+        [HttpPost("inscricao")]
+        public IActionResult Join(consulta data, string crmMedico, string cpfPaciente)
         {
             try
             {
+                //Cadastra uma nova consulta passando apenas a data
+                _consultaRepository.Cadastrar(data);
+
                 //Busca o médico pelo nome informado
-                medico medicoBuscado = _consultaRepository.BuscarPorNome(crmMedico);
+                medico medicoBuscado = _consultaRepository.BuscarPorCrm(crmMedico);
 
                 //Busca o paciente pelo RG informado
-                paciente pacienteBuscado = _consultaRepository.BuscarPorRg(cpfPaciente);
+                paciente pacienteBuscado = _consultaRepository.BuscarPorCpf(cpfPaciente);
 
                 consulta inscricao = new consulta()
                 {
-                    //Armazena no idCOnsulta o ID da consulta recebido na url
-                    idConsulta = idConsultaa,
+                    //Armazena no idConsulta o ID da consulta recebido na url
+                    idConsulta = data.idConsulta,
 
                     //Armazena o ID do médicoBuscado atrávez do método BuscarPorNome
                     idMedico = medicoBuscado.idMedico,
 
                     //Armazena o ID do pacienteBuscado atravéz do método BuscarPorRg
                     idPaciente = pacienteBuscado.idPaciente,
+
+                    //Armazena a data da consulta atrávez da data passada
+                    dataConsulta = data.dataConsulta,
 
                     //Define a situação como "agendada"
                     idSituacao = Convert.ToInt32(1)
@@ -264,13 +269,36 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// <param name="id">ID da situação que será atualizada</param>
         /// <param name="status">Nova situação da consulta</param>
         /// <returns>Um status code 204 - NoContent</returns>
-        [Authorize(Roles = "2")]
+        //[Authorize(Roles = "2")]
         [HttpPatch("{id}")]
         public IActionResult UpdateSituation(int id, consulta status)
         {
             try
             {
                 _consultaRepository.AprovarRecusar(id, status.idSituacao.ToString());
+
+                return StatusCode(204);
+            }
+            catch (Exception ex)
+            {
+                //Retorna um status code 400 - BadRequest com a exception
+                return BadRequest(ex);
+            }
+        }
+
+        /// <summary>
+        /// Atualiza a descrição de uma consulta
+        /// </summary>
+        /// <param name="id">ID da consulta que terá a descrição atualizada</param>
+        /// <param name="descricao">Descrição da consulta</param>
+        /// <returns>Um status code 204 - NoContent</returns>
+        //[Authorize(Roles = "2")]
+        [HttpPatch("{id}/descricao")]
+        public IActionResult UpdateDesc(int id, consulta descricao)
+        {
+            try
+            {
+                _consultaRepository.AprovarRecusar(id, descricao.descricao.ToString());
 
                 return StatusCode(204);
             }

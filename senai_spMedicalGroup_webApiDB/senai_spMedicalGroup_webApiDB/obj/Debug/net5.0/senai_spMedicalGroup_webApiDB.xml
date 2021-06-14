@@ -101,14 +101,13 @@
             </summary>
             <returns>Uma lista de consultas com um status code 200 - OK</returns>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.Join(System.Int32,System.String,System.String)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.Join(senai_spMedicalGroup_webApiDB.Domains.consulta,System.String,System.String)">
             <summary>
-            Inscreve 
+            Inscreve um médico e um paciente em uma consulta já criada
             </summary>
-            <param name="idConsultaa"></param>
-            <param name="crmMedico"></param>
-            <param name="cpfPaciente"></param>
-            <returns></returns>
+            <param name="crmMedico">CRM do médico que será atrelado a consulta</param>
+            <param name="cpfPaciente">CPF do paciente que será atrelado a consulta</param>
+            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.UpdateSituation(System.Int32,senai_spMedicalGroup_webApiDB.Domains.consulta)">
             <summary>
@@ -116,6 +115,14 @@
             </summary>
             <param name="id">ID da situação que será atualizada</param>
             <param name="status">Nova situação da consulta</param>
+            <returns>Um status code 204 - NoContent</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.UpdateDesc(System.Int32,senai_spMedicalGroup_webApiDB.Domains.consulta)">
+            <summary>
+            Atualiza a descrição de uma consulta
+            </summary>
+            <param name="id">ID da consulta que terá a descrição atualizada</param>
+            <param name="descricao">Descrição da consulta</param>
             <returns>Um status code 204 - NoContent</returns>
         </member>
         <member name="P:senai_spMedicalGroup_webApiDB.Controllers.EspecialidadeController._especialidadeRepository">
@@ -509,11 +516,11 @@
             </summary>
             <param name="id">Id da consulta que será deletada</param>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.BuscarPorNome(System.String)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.BuscarPorCrm(System.String)">
             <summary>
             Busca um médico pelo seu nome para inserir ele no cadastro da consulta
             </summary>
-            <param name="nomeMedico">Nome do médico que será atrelado a consulta</param>
+            <param name="crmMedico">Nome do médico que será atrelado a consulta</param>
             <returns>O médico buscado</returns>
         </member>
         <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.Cadastrar(senai_spMedicalGroup_webApiDB.Domains.consulta)">
@@ -522,11 +529,11 @@
             </summary>
             <param name="novaConsulta">Objeto com as informações que serão cadastradas</param>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.BuscarPorRg(System.String)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.BuscarPorCpf(System.String)">
             <summary>
             Busca um paciente pelo seu rg
             </summary>
-            <param name="rg">RG do paciente que será buscado</param>
+            <param name="cpf">RG do paciente que será buscado</param>
             <returns>O paciente buscado</returns>
         </member>
         <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.Atualizar(System.Int32,senai_spMedicalGroup_webApiDB.Domains.consulta)">
@@ -535,6 +542,13 @@
             </summary>
             <param name="id">ID da consulta que será atualizada</param>
             <param name="consultaAtualizada">Objeto com asnovas informações</param>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.AddDescricao(System.Int32,System.String)">
+            <summary>
+            Adiciona uma descrição a consulta desejada
+            </summary>
+            <param name="id">Id da consulta que terá uma descrição adicionada</param>
+            <param name="descricao">Parâmetro com a descrição que será adicionada</param>
         </member>
         <member name="T:senai_spMedicalGroup_webApiDB.Interfaces.IEspecialidadeRepository">
             <summary>
@@ -885,14 +899,14 @@
             <param name="id">Id da consulta que será buscada</param>
             <returns>A consulta buscada</returns>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.BuscarPorNome(System.String)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.BuscarPorCrm(System.String)">
             <summary>
             Busca um médico pelo seu nome para inserir ele no cadastro da consulta
             </summary>
             <param name="crmMedico">Nome do médico que será atrelado a consulta</param>
             <returns>O médico buscado</returns>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.BuscarPorRg(System.String)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.BuscarPorCpf(System.String)">
             <summary>
             Busca um paciente pelo seu rg
             </summary>

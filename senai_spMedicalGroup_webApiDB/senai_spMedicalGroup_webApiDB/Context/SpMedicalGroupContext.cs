@@ -82,6 +82,10 @@ namespace senai_spMedicalGroup_webApiDB.Context
 
                 entity.Property(e => e.idSituacao).HasDefaultValueSql("((1))");
 
+                entity.Property(e => e.descricao)
+                    .HasMaxLength(500)
+                    .IsUnicode(false);
+
                 entity.HasOne(d => d.idMedicoNavigation)
                     .WithMany(p => p.consulta)
                     .HasForeignKey(d => d.idMedico)

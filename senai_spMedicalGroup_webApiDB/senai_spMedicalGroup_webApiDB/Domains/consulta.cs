@@ -18,6 +18,8 @@ namespace senai_spMedicalGroup_webApiDB.Domains
         public DateTime dataConsulta { get; set; }
         public int? idSituacao { get; set; }
 
+        public string descricao { get; set; }
+
         public virtual medico idMedicoNavigation { get; set; }
         public virtual paciente idPacienteNavigation { get; set; }
         public virtual situacao idSituacaoNavigation { get; set; }

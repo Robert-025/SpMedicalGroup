@@ -27,7 +27,7 @@ namespace senai_spMedicalGroup_webApiDB
                 {
                     //Ignora os loopings nas consultas
                     options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
-                    //Ignora os valores nulos ao fazer junções nas consultas
+                    //Ignora os valores nulos ao fazer junï¿½ï¿½es nas consultas
                     options.SerializerSettings.NullValueHandling = NullValueHandling.Ignore;
                 });
 
@@ -46,8 +46,19 @@ namespace senai_spMedicalGroup_webApiDB
                 c.IncludeXmlComments(xmlPath);
             });
 
+            // Adiciona o CORS ao projeto
+            services.AddCors(options => {
+                options.AddPolicy("CorsPolicy", 
+                    builder => {
+                        builder.WithOrigins("http://localhost:3000")
+                                                                    .AllowAnyHeader()
+                                                                    .AllowAnyMethod();
+                    }
+                );
+            });
 
-            // Define a forma de autenticação
+
+            // Define a forma de autenticaï¿½ï¿½o
             services
                .AddAuthentication(options =>
                {
@@ -59,25 +70,25 @@ namespace senai_spMedicalGroup_webApiDB
                {
                    options.TokenValidationParameters = new TokenValidationParameters
                    {
-                        // define que o issuer será validado
+                        // define que o issuer serï¿½ validado
                         ValidateIssuer = true,
 
-                        // define que o audience será validado
+                        // define que o audience serï¿½ validado
                         ValidateAudience = true,
 
-                        // define que o tempo de vida será validado
+                        // define que o tempo de vida serï¿½ validado
                         ValidateLifetime = true,
 
-                        // forma de criptografia e a chave de autenticação
+                        // forma de criptografia e a chave de autenticaï¿½ï¿½o
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("sp-medical-group-autenticacao")),
 
-                        // verifica o tempo de expiração do token
+                        // verifica o tempo de expiraï¿½ï¿½o do token
                         ClockSkew = TimeSpan.FromMinutes(30),
 
-                        // define o nome da issuer, de onde está vindo
+                        // define o nome da issuer, de onde estï¿½ vindo
                         ValidIssuer = "spMedicalGroup.webApi",
 
-                        // define o nome da audience, para onde está indo
+                        // define o nome da audience, para onde estï¿½ indo
                         ValidAudience = "spMedicalGroup.webApi"
                    };
                });
@@ -93,11 +104,14 @@ namespace senai_spMedicalGroup_webApiDB
 
             app.UseRouting();            
 
-            //Habilita a autenticação
+            //Habilita a autenticaï¿½ï¿½o
             app.UseAuthentication();
 
-            //Habilita a autorização
+            //Habilita a autorizaï¿½ï¿½o
             app.UseAuthorization();
+
+            // Habilita o CORS
+            app.UseCors("CorsPolicy");
 
             app.UseEndpoints(endpoints =>
             {
@@ -114,8 +128,6 @@ namespace senai_spMedicalGroup_webApiDB
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "SpMedical.webApi v1");
                 c.RoutePrefix = string.Empty;
             });       
-
-            
         }
     }
 }
