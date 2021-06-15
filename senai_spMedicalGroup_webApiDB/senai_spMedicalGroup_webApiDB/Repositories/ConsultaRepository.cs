@@ -165,6 +165,8 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// <param name="novaConsulta">Objeto com as informações que serão cadastradas</param>
         public void Cadastrar(consulta novaConsulta)
         {
+            novaConsulta.idSituacao = 1;
+
             //Adiciona na lista consultas o objeto com as informações passadas
             ctx.consultas.Add(novaConsulta);
 

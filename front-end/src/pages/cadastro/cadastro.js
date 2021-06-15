@@ -28,32 +28,26 @@ export default class Cadastro extends Component{
         //Faz a chamada para a API
         fetch('http://localhost:5000/api/Consulta')
 
-        .then(resposta => {
-            //Caso a requisição retorne um status code 200
-            if (resposta.status === 200) {
-                //Atualiza o state listaConsultas com os dados obtidos
-                this.setState({ listaConsultas : resposta.data })
-                console.log(this.state.listaConsultas)
-            }
-        })
+        //Define que a resposta da requisição será em JSON
+        .then(resposta => resposta.json())
+
+        //Atualiza o state listaConsultas com os dados obtidos
+        .then(dados => this.setState({ listaConsultas : dados }))
 
         //Caso acorra algum erro, mostra ele no console do navegador
         .catch((erro) => console.log(erro))
     }
-    
+
     //Fazer a requisição e trazer a lista de médicos
-    buscarMedicos = () => 
+    buscarMedicos = () =>
     {
         fetch('http://localhost:5000/api/Medico')
 
-        .then(resposta => {
-            //Caso a requisição retorne um status code 200
-            if (resposta.status === 200) {
-                //Atualiza o state listaMedicos com os dados obtidos
-                this.setState({ listaMedicos : resposta.data })
-                console.log(this.state.listaMedicos)
-            }
-        })
+        //Define que a resposta da requisição será em JSON
+        .then(resposta => resposta.json())
+
+        //Atualiza o state listaMedicos com os dados obtidos
+        .then(dados => this.setState({ listaMedicos : dados }))
 
         //Caso acorra algum erro, mostra ele no console do navegador
         .catch((erro) => console.log(erro))
@@ -64,31 +58,11 @@ export default class Cadastro extends Component{
     {
         fetch('http://localhost:5000/api/Paciente')
 
-        .then(resposta => {
-            //Caso a requisição retorne um status code 200
-            if (resposta.status === 200) {
-                //Atualiza o state listaPacientes com os dados obtidos
-                this.setState({ listaPacientes : resposta.data })
-                console.log(this.state.listaPacientes)
-            }
-        })
+        //Define que a resposta da requisição será em JSON
+        .then(resposta => resposta.json())
 
-        //Caso acorra algum erro, mostra ele no console do navegador
-        .catch((erro) => console.log(erro))
-    }
-
-    buscarSituacao = () =>
-    {
-        fetch('http://localhost:5000/api/Situacao')
-
-        .then(resposta => {
-            //Caso a requisição retorne um status code 200
-            if (resposta.status === 200) {
-                //Atualiza o state listaSituacao com os dados obtidos
-                this.setState({ listaSituacao : resposta.data })
-                console.log(this.state.listaSituacao)
-            }
-        })
+        //Atualiza o state listaPacientes com os dados obtidos
+        .then(dados => this.setState({ listaPacientes : dados }))
 
         //Caso acorra algum erro, mostra ele no console do navegador
         .catch((erro) => console.log(erro))
@@ -126,18 +100,14 @@ export default class Cadastro extends Component{
             body : JSON.stringify({ consulta }),
         })
 
-        .then(resposta => {
-            //Caso a requisição retorne um status code 200
-            if (resposta.status === 201) {
-                //Exibe no console do navegado uma mensagem
-                console.log('Evento cadastrado')
-                //Define que a requisição terminou
-                this.setState({ isLoading : false })
-                //Atualiza o state listaSituacao com os dados obtidos
-                this.setState({ listaSituacao : resposta.data })
-                console.log(this.state.listaSituacao)
-            }
-        })
+        //Define que a resposta da requisição será em JSON
+        .then(resposta => resposta.json())
+
+        //Atualiza o state listaPacientes com os dados obtidos
+        .then(dados => this.setState({ listaPacientes : dados }))
+        .then(dados => this.setState({ listaMedicos : dados }))
+        .then(dados => this.setState({ data : dados }))
+        .then(dados => this.setState({ isLoading : true }))
 
         .catch(erro => {
             //Mostra o erro no console do navegador
@@ -147,7 +117,7 @@ export default class Cadastro extends Component{
         })
 
         //Atualiza a lista de consultas sem que o usuário precise fazer alguma outra ação
-        .then(this.buscarConsultas()); 
+        .then(this.buscarConsultas());
     }
 
     //Função genérica que atualiza o state de acordo com o input, pode ser ultilizada em vários inputs diferentes
@@ -168,24 +138,16 @@ export default class Cadastro extends Component{
                             <div className="card-cadastro">
                                 <form className="info-cards" onSubmit={this.cadastrarConsulta}>
                                     <div className="caixa-texto">
-                                        <p>CRM do médico</p>
-                                        <input
-                                            type="text"
-                                            value={this.state.idMedico}
-                                            onChange={this.atualizaStateCampo}
-                                        />
-                                    </div>
-                                    <div className="caixa-texto">
-                                        <p>CPF do paciente</p>
-                                        <select name='idPaciente' value={this.state.idPaciente} onChange={this.atualizaStateCampo}>
-                                            <option value='0'>Selecione o CPF do paciente</option>
+                                        <p>Nome do médico</p>
+                                        <select name='idMedico' value={this.state.idMedico} onChange={this.atualizaStateCampo}>
+                                            <option value='0'>Selecione o Médico</option>
 
                                             {/* Usa o map() para preencher a lista de opções, ou seja, percorre a lista de pacientes e retorna uma option para cada paciente definindo o valor como seu prórpio id */}
 
                                             {
-                                                this.state.listaPacientes.map( paciente => {
+                                                this.state.listaMedicos.map( medico => {
                                                     return(
-                                                        <option key={paciente.idPaciente} value={paciente.idPaciente}>{paciente.cpf}</option>
+                                                        <option key={medico.idPaciente} value={medico.idPaciente}>{medico.idUsuarioNavigation.nome}</option>
                                                     )
                                                 })
                                             }
@@ -193,10 +155,36 @@ export default class Cadastro extends Component{
                                         </select>
                                     </div>
                                     <div className="caixa-texto">
-                                        <p>Dia e hora</p>
+                                        <p>Nome do paciente</p>
+                                        <select name='idPaciente' value={this.state.idPaciente} onChange={this.atualizaStateCampo}>
+                                            <option value='0'>Selecione o paciente</option>
+
+                                            {/* Usa o map() para preencher a lista de opções, ou seja, percorre a lista de pacientes e retorna uma option para cada paciente definindo o valor como seu prórpio id */}
+
+                                            {
+                                                this.state.listaPacientes.map( paciente => {
+                                                    return(
+                                                        <option key={paciente.idPaciente} value={paciente.idPaciente}>{paciente.idUsuarioNavigation.nome}</option>
+                                                    )
+                                                })
+                                            }
+
+                                        </select>
+                                    </div>
+                                    <div className="caixa-texto">
+                                        <p>Dia</p>
                                         <input
                                             name='data'
                                             type="date"
+                                            value={this.state.data}
+                                            onChange={this.atualizaStateCampo}
+                                        />
+                                    </div>
+                                    <div className="caixa-texto">
+                                        <p>Hora</p>
+                                        <input
+                                            name='data'
+                                            type="time"
                                             value={this.state.data}
                                             onChange={this.atualizaStateCampo}
                                         />

@@ -140,6 +140,13 @@ footer{
     color: #000;
 }
 
+.caixa-texto select{
+    font-size: 25px;
+    width: 685px;
+    height: 55px;
+    border-radius: 35px;
+}
+
 .info-cards input{
     font-size: 25px;
     width: 685px;

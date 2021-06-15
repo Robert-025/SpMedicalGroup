@@ -101,14 +101,6 @@
             </summary>
             <returns>Uma lista de consultas com um status code 200 - OK</returns>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.Join(senai_spMedicalGroup_webApiDB.Domains.consulta,System.String,System.String)">
-            <summary>
-            Inscreve um médico e um paciente em uma consulta já criada
-            </summary>
-            <param name="crmMedico">CRM do médico que será atrelado a consulta</param>
-            <param name="cpfPaciente">CPF do paciente que será atrelado a consulta</param>
-            <returns>Um status code 201 - Created</returns>
-        </member>
         <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.UpdateSituation(System.Int32,senai_spMedicalGroup_webApiDB.Domains.consulta)">
             <summary>
             Atualiza a situação de uma consulta

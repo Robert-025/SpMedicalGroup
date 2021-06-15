@@ -18,7 +18,7 @@ export default class ListarAdm extends Component{
     buscarConsultas = (x) => {
         
         //Faz a chamada para a API
-         fetch('http://localhost:5000/api/Consulta')
+        fetch('http://localhost:5000/api/Consulta')
 
         //Define que a resposta da requisição será em JSON
         .then(resposta => resposta.json())
