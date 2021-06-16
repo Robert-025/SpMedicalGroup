@@ -16,6 +16,7 @@ export default class Cadastro extends Component{
             idSituacao : 1,
             descricao : '',
             data : new Date(),
+            hora : '',
             listaMedicos : [],
             listaPacientes : [],
             isLoading : false
@@ -88,7 +89,8 @@ export default class Cadastro extends Component{
         let consulta = {
             idPaciente : this.state.idPaciente,
             idMedico : this.state.idMedico,
-            dataConsulta : new Date( this.state.data ),
+            dataConsulta : new Date( this.state.data + 'T' + this.state.hora ),
+            // dataConsulta : this.state.data + T + this.state.hora
             idSituacao : this.state.idSituacao,
             descricao : this.state.descricao
         }
@@ -107,6 +109,7 @@ export default class Cadastro extends Component{
         .then(dados => this.setState({ listaPacientes : dados }))
         .then(dados => this.setState({ listaMedicos : dados }))
         .then(dados => this.setState({ data : dados }))
+        .then(dados => this.setState({ hora : dados }))
         .then(dados => this.setState({ isLoading : true }))
 
         .catch(erro => {
@@ -183,9 +186,9 @@ export default class Cadastro extends Component{
                                     <div className="caixa-texto">
                                         <p>Hora</p>
                                         <input
-                                            name='data'
+                                            name='hora'
                                             type="time"
-                                            value={this.state.data}
+                                            value={this.state.hora}
                                             onChange={this.atualizaStateCampo}
                                         />
                                     </div>
