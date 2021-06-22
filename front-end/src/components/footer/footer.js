@@ -5,6 +5,8 @@ import Facebook from '../../assets/img/Facebook.png';
 import Instagram from '../../assets/img/Instagram.png';
 import Twitter from '../../assets/img/Twitter.png';
 
+import { Link } from 'react-router-dom';
+
 export default function Footer(){
     return(
         <footer>
@@ -23,8 +25,8 @@ export default function Footer(){
             <div className="centro-footer">
                 <div className="altura--">
                     <div className="logo-footer">
-                        <img src={Logo} alt="Logo do Sp Medical Group" />
-                        <p>SP Medical<br/>Group </p>
+                    <Link to='/'><img src={Logo} alt="Logo do Sp Medical Group" /></Link>
+                    <Link to='/'><p>SP Medical<br/>Group </p></Link>
                     </div>
                     <p>Todos os direitos reservado</p>
                 </div>

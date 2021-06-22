@@ -8,8 +8,7 @@ import App from './pages/home/App.js';
 import NotFound from './pages/notFound/notFound';
 import listarAdm from './pages/listarADM/listarADM'
 import Cadastrar from './pages/cadastro/cadastro'
-// import listarMedico from './pages/listarADM/listar'
-// import listarPaciente from './pages/listarADM/listar'
+import Login from './pages/login/login';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -18,8 +17,9 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/listarAdm" component={listarAdm} />
+        <Route path="/listar" component={listarAdm} />
         <Route path="/cadastro" component={Cadastrar} />
+        <Route path="/login" component={Login} />
         <Redirect to="/notFound" component={NotFound} />
         <Route path="/notFound" component={NotFound} />
       </Switch>

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Sanchez&display=swap');
 
-.body{
+body{
     display: flex;
     flex-direction: column;
     font-family: 'PT Sans', sans-serif;
@@ -15,9 +15,9 @@ header{
     justify-content: center;
 }
 
-.main{
+main{
     width: 100%;
-    height: 100%;
+    height: 1840px;
     background-image: url("../img/Doctors-Listagem.png");
     background-repeat: no-repeat;
     background-position: center;
@@ -123,7 +123,6 @@ footer{
     color: #fff;
     border-radius: 45px;
     margin-top: 80px;
-    margin-bottom: 80px;
 }
 
 .dentro{
@@ -138,9 +137,17 @@ footer{
 
 .cima-info{
     width: 100%;
-    height: 60%;
+    height: 45%;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.baixo-info{
+    width: 100%;
+    height: 45%;
+    /* background-color:chartreuse ; */
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -153,7 +160,6 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 40px;
 }
 
 .situacao{
@@ -246,6 +252,11 @@ footer{
     align-items: center;
 }
 
+.logo-footer p{
+    text-decoration: none;
+    text-decoration-color: none;
+    color: #fff;
+}
 
 .direito-footer{
     width: 20%;
