@@ -15,10 +15,10 @@ header{
     justify-content: center;
 }
 
-.main{
+.main-login{
     width: 100%;
     height: 1120px;
-    background-image: url("../img/Doctors-login.png");
+    background-image: url("../img/Doctors-Listagem.png");
     background-repeat: no-repeat;
     background-position: center;
     display: flex;

@@ -24,10 +24,10 @@ footer{
     font-size: 18px;
 }
 
-main{
+.main-cadastro{
     width: 100%;
     height: 1440px;
-    background-image: url("../img/Doctors-fundo.png");
+    background-image: url("../../assets/img/Doctors-fundo.png");
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -69,7 +69,7 @@ main{
     border-radius: 30px;
     background-color: #BFD6F9;
     color: #000;
-
+    
 }
 
 .links-cabecalho{
@@ -102,19 +102,19 @@ main{
     align-items: center;
 }
 
-.informacoes{
+.informacoes-cadastro{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
 }
 
-.informacoes h2{
+.informacoes-cadastro h2{
     font-size: 48px;
     font-weight: bold;
 }
 
-.card{
+.card-cadastro{
     width: 900px;
     height: 1000px;
     background-color: #46f1fa;
@@ -138,6 +138,13 @@ main{
 .caixa-texto p{
     font-size: 30px;
     color: #000;
+}
+
+.caixa-texto select{
+    font-size: 25px;
+    width: 685px;
+    height: 55px;
+    border-radius: 35px;
 }
 
 .info-cards input{
@@ -211,11 +218,6 @@ main{
     align-items: center;
 }
 
-.logo-footer p{
-    text-decoration: none;
-    text-decoration-color: none;
-    color: #fff;
-}
 
 .direito-footer{
     width: 20%;

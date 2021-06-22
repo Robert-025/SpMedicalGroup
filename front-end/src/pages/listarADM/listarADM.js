@@ -41,7 +41,7 @@ export default class ListarAdm extends Component{
         return(
            <div className="body">
                 <Header />
-                <main className='main'>
+                <main className='main-adm'>
                     <section className="informacoes alinhando-centro">
                         <h2>Consultas</h2>
                         <div className="dentro">
@@ -86,7 +86,9 @@ export default class ListarAdm extends Component{
                                 }
                             </div>
                         </div>
+                        <Link to='/cadastro'>
                         <button type="submit">Cadastrar nova consulta</button>
+                        </Link>
                     </section>
                 </main>
                 <Footer />

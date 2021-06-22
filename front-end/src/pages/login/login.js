@@ -24,7 +24,7 @@ export default class Login extends Component{
             <div className="body">
             <Header />
 
-            <main className='main'>
+            <main className='main-login'>
                 <section className="informacoes alinhando-centro">
                     <h2>Login</h2>
                     <div className="dados">
