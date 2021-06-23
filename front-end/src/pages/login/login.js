@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../../assets/css/login.css'
@@ -28,13 +28,13 @@ export default class Login extends Component{
                 <section className="informacoes alinhando-centro">
                     <h2>Login</h2>
                     <div className="dados">
-                        <div className="email alinhando-centro">
+                        <div className="email">
                             <h3>E-mail</h3>
                             <div className="input">
                                 <input type="email" name="" id="" />
                             </div>
                         </div>
-                        <div className="senha alinhando-centro">
+                        <div className="senha">
                             <h3>Senha</h3>
                             <div className="input">
                                 <input type="password" name="" id="" />
