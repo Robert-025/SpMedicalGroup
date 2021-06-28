@@ -19,6 +19,10 @@ export default class Login extends Component{
 
     }
 
+    atualizarStateX = () => {
+
+    }
+
     render(){
         return(
             <div className="body">
@@ -27,21 +31,35 @@ export default class Login extends Component{
             <main className='main-login'>
                 <section className="informacoes alinhando-centro">
                     <h2>Login</h2>
-                    <div className="dados">
+
+                    {/* Chama a função de login quando o botão é pressionado */}
+
+                    <form className="dados" onSubmit={}>
                         <div className="email">
                             <h3>E-mail</h3>
                             <div className="input">
-                                <input type="email" name="" id="" />
+                                <input 
+                                    type="email" 
+                                    //Define que o input email recebe o valor do state email
+                                    name="email"
+                                    value={this.state.email}
+                                    onChange={this.atualizarStateX} />
                             </div>
                         </div>
                         <div className="senha">
                             <h3>Senha</h3>
                             <div className="input">
-                                <input type="password" name="" id="" />
+                                <input 
+                                    type="password" 
+                                    //Define que o input senha recebe o valor do state senha
+                                    name="senha"
+                                    value={this.state.senha}
+                                    onChange={this.atualizarStateX} />
                             </div>
                         </div>
                         <button type="submit">Entrar</button>
-                    </div>
+                    </form>
+
                 </section>
             </main>
 
