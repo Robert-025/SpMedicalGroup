@@ -50,7 +50,7 @@ ON U.idUsuario = P.idUsuario;
 
 -- Mostrando todas as consultas depois de uma certa data
 SELECT U.nome [paciente], dataNascimento, telefone, 
-cpf, dataConsulta, crm,  E.nome [tipoConsulta], descricao
+cpf, dataConsulta, crm,  E.nome [tipoConsulta]
 FROM pacientes P
 INNER JOIN usuarios U
 ON P.idUsuario = U.idUsuario
@@ -62,7 +62,7 @@ INNER JOIN medicos M
 ON C.idMedico = M.idMedico
 INNER JOIN especialidades E
 ON M.idEspecialidade = E.idEspecialidade
-WHERE C.dataConsulta > '2021/01/01';
+--WHERE C.dataConsulta > '2021/01/01';
 
 -- Convertendo a data de nascimento no select para DD/MM/AAAA
 SELECT nome, email, CONVERT(VARCHAR, dataNascimento, 103) [dataNascimento] FROM usuarios
