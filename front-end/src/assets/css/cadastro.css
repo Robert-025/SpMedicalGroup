@@ -96,6 +96,14 @@ footer{
     text-decoration: underline;
 }
 
+.link-home{
+    text-decoration: none;
+}
+
+.link-home p{
+    color: #fff;
+}
+
 .alinhando-centro{
     display: flex;
     justify-content: center;

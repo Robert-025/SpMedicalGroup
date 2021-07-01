@@ -8,7 +8,7 @@ export default function Header(){
         <div className="content-cabecalho">
             <div className="esquerdo-header">
                 <Link to='/'><img src={Logo} alt="Logo do Sp Medical Group" /></Link>
-                <Link to='/'>SP Medical<br/>Group</Link>
+                <Link className='link-home' to='/'><p>SP Medical<br/>Group</p></Link>
             </div>
             
             <div className="direito-header">

@@ -95,6 +95,13 @@ footer{
     font-size: 35px;
     text-decoration: underline;
 }
+.link-home{
+    text-decoration: none;
+}
+
+.link-home p{
+    color: #fff;
+}
 
 .alinhando-centro{
     display: flex;

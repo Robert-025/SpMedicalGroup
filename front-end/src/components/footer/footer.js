@@ -26,7 +26,7 @@ export default function Footer(){
                 <div className="altura--">
                     <div className="logo-footer">
                     <Link to='/'><img src={Logo} alt="Logo do Sp Medical Group" /></Link>
-                    <Link to='/'><p>SP Medical<br/>Group </p></Link>
+                    <Link className='link-home' to='/'><p>SP Medical<br/>Group </p></Link>
                     </div>
                     <p>Todos os direitos reservado</p>
                 </div>

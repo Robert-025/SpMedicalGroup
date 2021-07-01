@@ -102,6 +102,14 @@ footer{
     align-items: center;
 }
 
+.link-home{
+    text-decoration: none;
+}
+
+.link-home p{
+    color: #fff;
+}
+
 .informacoes{
     width: 60%;
     height: 100%;
