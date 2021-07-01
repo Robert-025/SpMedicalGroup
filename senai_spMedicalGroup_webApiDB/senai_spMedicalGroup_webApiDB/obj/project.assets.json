@@ -7534,19 +7534,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\10\\.nuget\\packages\\": {}
+    "C:\\Users\\40228034876\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
+      "projectUniqueName": "C:\\Users\\40228034876\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
       "projectName": "senai_spMedicalGroup_webApiDB",
-      "projectPath": "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
-      "packagesPath": "C:\\Users\\10\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\10\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\obj\\",
+      "projectPath": "C:\\Users\\40228034876\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB.csproj",
+      "packagesPath": "C:\\Users\\40228034876\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\40228034876\\Desktop\\SpMedicalGroup\\senai_spMedicalGroup_webApiDB\\senai_spMedicalGroup_webApiDB\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\10\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\40228034876\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -7621,7 +7621,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.204\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }

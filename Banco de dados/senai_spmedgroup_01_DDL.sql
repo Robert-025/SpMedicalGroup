@@ -11,7 +11,8 @@ CREATE TABLE clinicas
 	nomeClinica			VARCHAR(100) NOT NULL,
 	endereco			VARCHAR(255) UNIQUE NOT NULL,
 	cnpj				CHAR(14) UNIQUE NOT NULL,
-
+--	horarioAbertura		TIME,
+--	horarioFechamento	TIME
 );
 GO
 
@@ -42,7 +43,8 @@ CREATE TABLE usuarios
 	idTipo				INT FOREIGN KEY REFERENCES tiposUsuarios(idTipo),
 	nome				VARCHAR(255) NOT NULL,
 	email				VARCHAR(255) UNIQUE NOT NULL,
-	dataNascimento		DATE NOT NULL
+	dataNascimento		DATE NOT NULL,
+--	senha				VARCHAR(20)
 );
 GO
 
@@ -73,19 +75,24 @@ CREATE TABLE consultas
 	idPaciente			INT FOREIGN KEY REFERENCES pacientes(idPaciente),
 	idMedico			INT FOREIGN KEY REFERENCES medicos(idMedico),
 	dataConsulta		SMALLDATETIME NOT NULL,
-	idSituacao			INT FOREIGN KEY REFERENCES situacoes(idSituacao) DEFAULT (1)
+	idSituacao			INT FOREIGN KEY REFERENCES situacoes(idSituacao) DEFAULT (1),
+--	descricao			VARCHAR (500)
 );
 GO
 
 ALTER TABLE clinicas
 ADD horarioAbertura TIME;
+GO
 
 ALTER TABLE clinicas
 ADD horarioFechamento TIME;
+GO
 
 ALTER TABLE usuarios
 ADD senha VARCHAR(20);
+GO
 -- Não coloquei not null porque não permitiu, e esqueci de colocar
 
 ALTER TABLE consultas
 ADD descricao VARCHAR (500);
+GO

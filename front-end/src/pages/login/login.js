@@ -40,67 +40,65 @@ export default class Login extends Component{
 
         .catch(() => {
             this.setState({ erroMensagem : "E-mail ou senha inválidos! Tente novamente.", isLoading : false })
-            
         });
     }
 
     //Função genérica que atualiza o state de acordo com o input, pode ser ultilizada em vários inputs diferentes
-    atualizaState = (x) =>
-    {
+    atualizarStateX = (x) => {
         this.setState({ [x.target.name] : x.target.value })
     }
 
     render(){
         return(
             <div className="body">
-            <Header />
+                <Header />
 
-            <main className='main-login'>
-                <section className="informacoes alinhando-centro">
-                    <h2>Login</h2>
-                    <form onSubmit={this.realizarLogin} className="dados">
-                        <div className="email">
-                            <h3>E-mail</h3>
-                            <div className="input">
-                                <input 
-                                    type="email"
-                                    name="email"
-                                    //Define que o input email vai receber o valor do state email
-                                    value={this.state.email}
-                                    //Chama a função que atualiza o state
-                                    onChange={this.atualizaState} />
+                <main className='main-login'>
+                    <section className="informacoes alinhando-centro">
+                        <form>
+                            <h2>Login</h2>
+                            <div className="email">
+                                <h3>E-mail</h3>
+                                <div className="input">
+                                    <input 
+                                        type="email"
+                                        name="email"
+                                        //Define que o input email vai receber o valor do state email
+                                        value={this.state.email}
+                                        //Chama a função que atualiza o state
+                                        onChange={this.atualizaState} />
+                                </div>
                             </div>
-                        </div>
-                        <div className="senha">
-                            <h3>Senha</h3>
-                            <div className="input">
-                                <input 
-                                    type="password"
-                                    name="senha"
-                                    //Define que o input senha vai receber o valor do state senha
-                                    value={this.state.senha}
-                                    //Chama a função que atualiza o state
-                                    onChange={this.atualizaState} />
+                            <div className="senha">
+                                <h3>Senha</h3>
+                                <div className="input">
+                                    <input 
+                                        type="password"
+                                        name="senha"
+                                        //Define que o input senha vai receber o valor do state senha
+                                        value={this.state.senha}
+                                        //Chama a função que atualiza o state
+                                        onChange={this.atualizaState} />
+                                </div>
                             </div>
-                        </div>
-                        <p>{this.state.erroMensagem}</p>    {/* Mensagem de erro */}
+                            <p>{this.state.erroMensagem}</p>    {/* Mensagem de erro */}
 
-                        {
-                            this.state.isLoading === true &&
-                            <button type="submit" disabled>Carregando</button>
-                        }
+                            {
+                                this.state.isLoading === true &&
+                                <button type="submit" disabled>Carregando</button>
+                            }
 
-                        {
-                            this.state.isLoading === false &&
-                            <button type="submit" disabled={this.state.email === '' || this.state.senha === '' ? 'none' : ''}>Entrar</button>
-                        }
+                            {
+                                this.state.isLoading === false &&
+                                <button type="submit" disabled={this.state.email === '' || this.state.senha === '' ? 'none' : ''}>Entrar</button>
+                            }
 
-                        {/* <button type="submit">Entrar</button> */}
-                    </form>
-                </section>
-            </main>
+                            {/* <button type="submit">Entrar</button> */}
+                        </form>
+                    </section>
+                </main>
 
-            <Footer />
+                <Footer />
             </div>
         )
     }
