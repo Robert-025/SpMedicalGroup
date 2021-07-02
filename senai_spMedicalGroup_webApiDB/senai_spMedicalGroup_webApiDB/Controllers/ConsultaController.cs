@@ -157,7 +157,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
                 int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
 
                 // Retora a resposta da requisição 200 - OK fazendo a chamada para o método e trazendo a lista
-                return Ok(_consultaRepository.ListarMinhas(idUsuario));
+                return Ok(_consultaRepository.ListarMinhasPaciente(idUsuario));
             }
             catch (Exception ex)
             {

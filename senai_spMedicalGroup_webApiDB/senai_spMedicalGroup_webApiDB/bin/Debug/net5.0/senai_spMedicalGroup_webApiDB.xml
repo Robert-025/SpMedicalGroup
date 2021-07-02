@@ -469,7 +469,7 @@
             Interface responsável pelo ConsultaRepository
             </summary>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.ListarMinhas(System.Int32)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.ListarMinhasPaciente(System.Int32)">
             <summary>
             Lista todas as consultas que um determinado usuario participa
             </summary>
@@ -929,7 +929,7 @@
             </summary>
             <returns>Uma lista com as consultas</returns>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.ListarMinhas(System.Int32)">
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.ListarMinhasPaciente(System.Int32)">
             <summary>
             Lista todas as consultas que um determinado usuario participa
             </summary>

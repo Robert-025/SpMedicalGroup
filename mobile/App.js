@@ -3,37 +3,69 @@ import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
 import api from './src/services/api';
 
-export default class App extends Component() {
+export default class App extends Component{
   constructor(props){
     super(props);
     this.state = {
-      listaConsultas : []
-    };
+      listaConsultas: [],
+    }
   }
-  
-  buscarConsultas = () => {
-    const resposta = await api.get('Consulta/minhas')
-  
-    this.setState({ listaConsultas : resposta.data })
-  };
-  
+
+  buscarConsultas = async () => {
+    //Faz a requisição para a API 
+    const resposta = await api.get("/Consulta");
+
+    //Armazena a resposta da API
+    const dadosApi = resposta.data;
+
+    //Atualiza a listaConsultas
+    this.setState({ listaConsultas: dadosApi })
+  }
+
+  //Realiza a função assim que entrar na DOM
   componentDidMount(){
     this.buscarConsultas();
   }
 
-  render() {
+  render(){
     return(
-      <View></View>
+      <View style={styles.main}>
+
+        {/* MAIN */}
+
+        <View style={styles.cabecalho}>
+          <Text style={styles.tituloCabecalho}>{"Consultas".toUpperCase()}</Text>
+        </View>
+
+        <View>
+
+        </View>
+
+      {/*  */}
+
+      </View>
     )
   }
-
 }
 
 const styles = StyleSheet.create({
-  container: {
+  main: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#005ae6',
     alignItems: 'center',
     justifyContent: 'center',
   },
+
+  cabecalho: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+
+  tituloCabecalho: {
+    fontSize: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    color: '#fff',
+  }
 });
