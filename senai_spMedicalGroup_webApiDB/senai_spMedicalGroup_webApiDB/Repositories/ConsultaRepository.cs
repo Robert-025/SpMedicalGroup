@@ -226,7 +226,7 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
         /// </summary>
         /// <param name="id">Id do usuario que participa das consultas listados</param>
         /// <returns>Uma lista de consultas com os dados da consulta</returns>
-        public List<consulta> ListarMinhas(int id)
+        public List<consulta> ListarMinhasPaciente(int id)
         {
             //Retorna uma lista com todas as informações das consultas
             return ctx.consultas
@@ -237,7 +237,7 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
                     //Adiciona na busca as informações da clínica que o médico pertence
                     .Include(c => c.idMedicoNavigation.idClinicaNavigation)
                     //Estabelece como parâmetro de consulta o ID do usuario recebido
-                    .Where(c => c.idPaciente == id)
+                    .Where(c => c.idPacienteNavigation.idUsuario == id)
                     .ToList();
         }
 
