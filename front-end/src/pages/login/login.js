@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 //import { Link } from 'react-router-dom';
 import axios from  'axios'
+import { parseJwt } from '../../services/authentication'
 
 import '../../assets/css/login.css'
 
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
+import { parse } from 'json5';
 
 export default class Login extends Component{
     constructor(props){
@@ -32,19 +34,43 @@ export default class Login extends Component{
         })
 
         .then(resposta => {
+            //Verifica o retorna da requisição
             if(resposta.status === 200){
+                //Salva o valor do token no localStorage
                 localStorage.setItem('login', resposta.data.token)
+                //Define que a requisição terminou
                 this.setState({ isLoading : false })
+
+                console.log(parseJwt())
+
+                //Veridica o tipo de usuário que realizou o login
+                switch (parseJwt().Tipo) {
+                    case "1":
+                        //Caso seja adm força a página a ser redirecionada para a página de cadastro
+                        this.props.history.push('/cadastro')
+                      break;
+                    case "2":
+                        //Caso seja médico força a página a ser redirecionada para a página de listagem
+                        this.props.history.push('/listarAdm')
+                      break;
+                    case "3":
+                        //Caso seja paciente força a página a ser redirecionada para a página home
+                        this.props.history.push('/')
+                      break;
+                    default:
+                        break;
+                }
             }
         })
 
+        //Caso tenha erro, caí em uma mensagem personalizada e define o=que a requisição terminou
         .catch(() => {
             this.setState({ erroMensagem : "E-mail ou senha inválidos! Tente novamente.", isLoading : false })
         });
     }
 
     //Função genérica que atualiza o state de acordo com o input, pode ser ultilizada em vários inputs diferentes
-    atualizarStateX = (x) => {
+    atualizaState = (x) => {
         this.setState({ [x.target.name] : x.target.value })
     }
 
@@ -55,32 +81,32 @@ export default class Login extends Component{
 
                 <main className='main-login'>
                     <section className="informacoes alinhando-centro">
-                        <form>
-                            <h2>Login</h2>
-                            <div className="email">
-                                <h3>E-mail</h3>
-                                <div className="input">
-                                    <input 
-                                        type="email"
-                                        name="email"
-                                        //Define que o input email vai receber o valor do state email
-                                        value={this.state.email}
-                                        //Chama a função que atualiza o state
-                                        onChange={this.atualizaState} />
+                        <h2>Login</h2>
+                            <form className='dados' onSubmit={this.realizarLogin}>
+                                <div className="email">
+                                    <h3>E-mail</h3>
+                                    <div className="input">
+                                        <input 
+                                            type="email"
+                                            name="email"
+                                            //Define que o input email vai receber o valor do state email
+                                            value={this.state.email}
+                                            //Chama a função que atualiza o state
+                                            onChange={this.atualizaState} />
+                                    </div>
                                 </div>
-                            </div>
-                            <div className="senha">
-                                <h3>Senha</h3>
-                                <div className="input">
-                                    <input 
-                                        type="password"
-                                        name="senha"
-                                        //Define que o input senha vai receber o valor do state senha
-                                        value={this.state.senha}
-                                        //Chama a função que atualiza o state
-                                        onChange={this.atualizaState} />
+                                <div className="senha">
+                                    <h3>Senha</h3>
+                                    <div className="input">
+                                        <input 
+                                            type="password"
+                                            name="senha"
+                                            //Define que o input senha vai receber o valor do state senha
+                                            value={this.state.senha}
+                                            //Chama a função que atualiza o state
+                                            onChange={this.atualizaState} />
+                                    </div>
                                 </div>
-                            </div>
                             <p>{this.state.erroMensagem}</p>    {/* Mensagem de erro */}
 
                             {

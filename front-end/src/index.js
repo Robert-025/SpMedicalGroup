@@ -17,7 +17,7 @@ const routing = (
     <div>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/listar" component={listarAdm} />
+        <Route path="/listarAdm" component={listarAdm} />
         <Route path="/cadastro" component={Cadastrar} />
         <Route path="/login" component={Login} />
         <Redirect to="/notFound" component={NotFound} />

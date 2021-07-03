@@ -72,7 +72,10 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
                     new Claim(JwtRegisteredClaimNames.Jti, usuarioBuscado.idUsuario.ToString()),
 
                     //Armazena na claim o tipo do usuario autenticado
-                    new Claim(ClaimTypes.Role, usuarioBuscado.idTipo.ToString())
+                    new Claim(ClaimTypes.Role, usuarioBuscado.idTipo.ToString()),
+
+                    //Armazena na claim o tipo do usuario autenticado
+                    new Claim("Tipo", usuarioBuscado.idTipo.ToString())
                 };
 
                 //Define a chave de acesso ao token

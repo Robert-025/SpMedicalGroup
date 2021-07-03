@@ -65,7 +65,8 @@ export default class ListarAdm extends Component{
                                                 <div className="data-hora alinhando-centro">
                                                     <h3>Data e hora</h3>
                                                     <div className="campo">
-                                                        <p>{consulta.dataConsulta}</p>
+                                                        {/* <p>{(consulta.dataConsulta).split('T')[]}</p> */}
+                                                        <p>{Intl.DateTimeFormat("pt-BR").format(new Date(consulta.dataConsulta))} {(consulta.dataConsulta).split('T')[1]}</p>
                                                     </div>
                                                 </div>
                                                 <div className="descricao alinhando-centro">
