@@ -16,7 +16,7 @@ export default function Header(){
                 <nav className="links-cabecalho">
                     <Link to='/'>Início</Link>
                     <Link to='/listar'>Consultas</Link>
-                    <Link to='/usuario'>User</Link>
+                    <Link to='/usuario'>Contato</Link>
                 </nav>
             </div>
         </div>

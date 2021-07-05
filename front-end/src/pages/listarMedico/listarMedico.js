@@ -1,7 +1,7 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../../assets/css/listagemAdm.css';
+import '../../assets/css/listagemMedico.css';
 
 import Header from '../../components/header/header';
 import Footer from '../../components/footer/footer';
@@ -11,14 +11,24 @@ export default class ListarAdm extends Component{
         //Permite que nós possamos referênciar o this
         super(props);
         this.state = {
-            listaConsultas : []
+            listaConsultas : [],
+            descricaoAtualizada : ''
         }
     }
 
     buscarConsultas = (x) => {
         
         //Faz a chamada para a API
-        fetch('http://localhost:5000/api/Consulta')
+        fetch('http://localhost:5000/api/Consulta/minhas', {
+            
+            //Define o corpo da requisição especificando o tipo ( JSON )
+            //Em outras palavras, converte o state para uma string JSON
+            body : JSON.stringify({ tituloTipoEvento : this.state.titulo }),
+
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('login')
+            }
+        })
 
         //Define que a resposta da requisição será em JSON
         .then(resposta => resposta.json())
@@ -39,23 +49,21 @@ export default class ListarAdm extends Component{
 
     render(){
         return(
-           <div className="body">
+
+            <div className='body'>
                 <Header />
-                <main className='main-adm'>
+
+                <main className='main-medico'>
                     <section className="informacoes alinhando-centro">
                         <h2>Consultas</h2>
                         <div className="dentro">
                             <div className="cima-info">
+
+
                                 {
                                     this.state.listaConsultas.map(consulta => {
                                         return(
                                             <div className="card" key={consulta.idConsulta}>
-                                                <div className="medico alinhando-centro">
-                                                    <h3>Médico</h3>
-                                                    <div className="campo">
-                                                        <p>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</p>
-                                                    </div>
-                                                </div>
                                                 <div className="paciente alinhando-centro">
                                                     <h3>Paciente</h3>
                                                     <div className="campo">
@@ -65,7 +73,6 @@ export default class ListarAdm extends Component{
                                                 <div className="data-hora alinhando-centro">
                                                     <h3>Data e hora</h3>
                                                     <div className="campo">
-                                                        {/* <p>{(consulta.dataConsulta).split('T')[]}</p> */}
                                                         <p>{Intl.DateTimeFormat("pt-BR").format(new Date(consulta.dataConsulta))} {(consulta.dataConsulta).split('T')[1]}</p>
                                                     </div>
                                                 </div>
@@ -74,6 +81,7 @@ export default class ListarAdm extends Component{
                                                     <div className="campo">
                                                         <p>{consulta.descricao}</p>
                                                     </div>
+                                                    <a href="#">Inserir descrição</a>
                                                 </div>
                                                 <div className="situacao alinhando-centro">
                                                     <h3>Situação</h3>
@@ -82,18 +90,18 @@ export default class ListarAdm extends Component{
                                                     </div>
                                                 </div>
                                             </div>
-                                        );
+                                        )
                                     })
                                 }
                             </div>
                         </div>
-                        {/* <Link to='/cadastro'>
-                        <button type="submit">Cadastrar nova consulta</button>
-                        </Link> */}
                     </section>
                 </main>
+
                 <Footer />
             </div>
+
         )
     }
-} 
+
+}

@@ -1,6 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Sanchez&display=swap');
 
-.body{
+body{
     display: flex;
     flex-direction: column;
     font-family: 'PT Sans', sans-serif;
@@ -15,10 +15,10 @@ header{
     justify-content: center;
 }
 
-.main-adm{
+main{
     width: 100%;
-    height: auto;
-    background-image: url("../img/Doctors-Listagem.png");
+    height: 1840px;
+    background-image: url("./img/Doctors-Listagem.png");
     background-repeat: no-repeat;
     background-position: center;
     display: flex;
@@ -95,13 +95,6 @@ footer{
     font-size: 35px;
     text-decoration: underline;
 }
-.link-home{
-    text-decoration: none;
-}
-
-.link-home p{
-    color: #fff;
-}
 
 .alinhando-centro{
     display: flex;
@@ -130,7 +123,6 @@ footer{
     color: #fff;
     border-radius: 45px;
     margin-top: 80px;
-    margin-bottom: 80px;
 }
 
 .dentro{
@@ -145,9 +137,17 @@ footer{
 
 .cima-info{
     width: 100%;
-    height: 75%;
+    height: 45%;
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.baixo-info{
+    width: 100%;
+    height: 45%;
+    /* background-color:chartreuse ; */
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -160,7 +160,6 @@ footer{
     display: flex;
     flex-direction: column;
     justify-content: center;
-    margin-bottom: 40px;
 }
 
 .card h3{
