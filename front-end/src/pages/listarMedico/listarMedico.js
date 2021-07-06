@@ -1,6 +1,5 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 
 import '../../assets/css/listagemMedico.css';
 
@@ -13,30 +12,70 @@ export default class ListarAdm extends Component{
         super(props);
         this.state = {
             listaConsultas : [],
+            idConsultaAlterada : 0,
             descricaoAtualizada : ''
         }
     }
 
     buscarConsultas = (x) => {
         
-        axios('http://localhost:5000/api/Consulta/minhasP', {
+        fetch('http://localhost:5000/api/Consulta/minhasM', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('login')
             }
         })
 
-        .then(resposta => {
-            // Caso a requisição retorne um status code 200
-            if (resposta.status === 200) {
-                // atualiza o state listaConsultas com os dados obtidos
-                this.setState({ listaConsultas : resposta.data })
-                // e mostra no console do navegador a lista de tipos eventos
-                console.log(this.state.listaConsultas)
+        //Define que a resposta da requisição será em JSON
+        .then(resposta => resposta.json())
+
+        //Atualiza o state listaConsultas com os dados obtidos
+        .then(dados => this.setState({ listaConsultas : dados }))
+
+        //Caso acorra algum erro, mostra ele no console do navegador
+        .catch((erro) => console.log(erro))
+
+    }
+
+    //Busca a consulta pelo ID da mesma e atualiza os states
+    buscarConsultaPorId = (consulta) => {
+
+        this.setState({ idConsulta : consulta.idConsultaAlterada,
+                        descricao : consulta.descricaoAtualizada })
+
+        localStorage.setItem('descricao', consulta)
+    }
+
+    atualizarDescricao = (x) => {
+
+        x.preventDefault();
+
+        fetch('http://localhost:5000/api/Consulta/'+this.state.idConsultaAlterada+'/descricao', {
+            
+            //Define o método da requisição
+            method: 'PATCH',
+
+            //Define o corpo da requisição convertendo um objeto JS em JSON
+            body: JSON.stringify({ descricao : this.state.descricaoAtualizada }),
+
+            //Define o cabeçalho da requisição
+            headers : {
+                "Content-type" : "application/json",
+                'Authorization' : 'Bearer ' + localStorage.getItem('login')
             }
         })
-        // Caso ocorra algum erro, mostra no console do navegador
-        .catch(erro => console.log(erro));
 
+        //Define que a resposta da requisição será em JSON
+        .then(resposta => resposta.json())
+
+        //Atualiza o state listaConsultas com os dados obtidos
+        .then(dados => this.setState({ listaConsultas : dados }))
+
+        //Caso acorra algum erro, mostra ele no console do navegador
+        .catch((erro) => console.log(erro))
+
+        console.log(this.state.listaConsultas)
+
+        .then(this.buscarConsultas)
     }
 
     //Chama a função buscarConsultas() assim que o component é renderizado
@@ -77,7 +116,7 @@ export default class ListarAdm extends Component{
                                                     <div className="campo">
                                                         <p>{consulta.descricao}</p>
                                                     </div>
-                                                    <a href="#">Inserir descrição</a>
+                                                    <Link onClick={ () => this.buscarConsultaPorId(consulta) } to='/descricao'>Inserir descrição</Link>
                                                 </div>
                                                 <div className="situacao alinhando-centro">
                                                     <h3>Situação</h3>

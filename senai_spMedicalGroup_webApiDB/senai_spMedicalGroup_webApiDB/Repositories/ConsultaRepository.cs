@@ -236,6 +236,8 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
                     .Include(c => c.idMedicoNavigation.idEspecialidadeNavigation)
                     //Adiciona na busca as informações da clínica que o médico pertence
                     .Include(c => c.idMedicoNavigation.idClinicaNavigation)
+                    //Adiciona na busca as informações de usuário que pertence ao médico
+                    .Include(c => c.idMedicoNavigation.idUsuarioNavigation)
                     //Adiciona na busca as informações da situação da consulta
                     .Include(c => c.idSituacaoNavigation)
                     //Estabelece como parâmetro de consulta o ID do usuario recebido
@@ -254,6 +256,8 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
             return ctx.consultas
                     //Adiciona na busca as informações do paciente que fará a consulta
                     .Include(c => c.idPacienteNavigation)
+                    //Adiciona na busca as informações do usuário atrelado ao paciente que fará a consulta
+                    .Include(c => c.idPacienteNavigation.idUsuarioNavigation)
                     //Adiciona na busca as informações da situação da consulta
                     .Include(c => c.idSituacaoNavigation)
                     //Adiciona na busca as informações da clínica que o médico pertence

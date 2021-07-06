@@ -12,6 +12,7 @@ import listarMedico from './pages/listarMedico/listarMedico'
 import listarPaciente from './pages/listarPaciente/listarPaciente'
 import Cadastrar from './pages/cadastro/cadastro'
 import Login from './pages/login/login';
+import Descricao from './pages/descricao/descricao'
 
 import reportWebVitals from './reportWebVitals';
 import { parse } from 'json5';
@@ -48,6 +49,7 @@ const routing = (
         <Route path="/listarPaciente" component={listarPaciente} />
         <Route  path="/cadastro" component={Cadastrar} />
         <Route path="/login" component={Login} />
+        <Route path="/descricao" component={Descricao} />
         <Redirect to="/notFound" component={NotFound} />
         <Route path="/notFound" component={NotFound} />
       </Switch>

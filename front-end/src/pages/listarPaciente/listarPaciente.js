@@ -18,7 +18,11 @@ export default class ListarAdm extends Component{
     buscarConsultas = (x) => {
         
         //Faz a chamada para a API
-        fetch('http://localhost:5000/api/Consulta')
+        fetch('http://localhost:5000/api/Consulta/minhasP', {
+            headers : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('login')
+            }
+        })
 
         //Define que a resposta da requisição será em JSON
         .then(resposta => resposta.json())
@@ -59,10 +63,10 @@ export default class ListarAdm extends Component{
                                                         <p>{consulta.idMedicoNavigation.idUsuarioNavigation.nome}</p>
                                                     </div>
                                                 </div>
-                                                <div className="paciente alinhando-centro">
-                                                    <h3>Paciente</h3>
+                                                <div className="especialidade alinhando-centro">
+                                                    <h3>Especialidade</h3>
                                                     <div className="campo">
-                                                        <p>{consulta.idPacienteNavigation.idUsuarioNavigation.nome}</p>
+                                                        <p>{consulta.idMedicoNavigation.idEspecialidadeNavigation.nome}</p>
                                                     </div>
                                                 </div>
                                                 <div className="data-hora alinhando-centro">

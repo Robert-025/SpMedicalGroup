@@ -143,6 +143,16 @@ footer{
     align-items: center;
 }
 
+.info-cards-descricao{
+    width: 85%;
+    height: 90%;
+    /* background-color: brown; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .caixa-texto p{
     font-size: 30px;
     color: #000;
@@ -162,7 +172,23 @@ footer{
     border-radius: 35px;
 }
 
+.info-cards-descricao input{
+    font-size: 25px;
+    width: 685px;
+    height: 600px;
+    border-radius: 35px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .info-cards button{
+    width: 250px;
+    height: 70px;
+    border-radius: 60px;
+    font-size: 30px;
+}
+
+.info-cards-descricao button{
     width: 250px;
     height: 70px;
     border-radius: 60px;

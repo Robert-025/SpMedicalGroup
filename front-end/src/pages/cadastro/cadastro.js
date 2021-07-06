@@ -157,42 +157,42 @@ export default class Cadastro extends Component{
 
                                         </select>
                                     </div>
-                                    <div className="caixa-texto">
-                                        <p>Nome do paciente</p>
-                                        <select name='idPaciente' value={this.state.idPaciente} onChange={this.atualizaStateCampo}>
-                                            <option value='0'>Selecione o paciente</option>
+                                        <div className="caixa-texto">
+                                            <p>Nome do paciente</p>
+                                            <select name='idPaciente' value={this.state.idPaciente} onChange={this.atualizaStateCampo}>
+                                                <option value='0'>Selecione o paciente</option>
 
-                                            {/* Usa o map() para preencher a lista de opções, ou seja, percorre a lista de pacientes e retorna uma option para cada paciente definindo o valor como seu prórpio id */}
+                                                {/* Usa o map() para preencher a lista de opções, ou seja, percorre a lista de pacientes e retorna uma option para cada paciente definindo o valor como seu prórpio id */}
 
-                                            {
-                                                this.state.listaPacientes.map( paciente => {
-                                                    return(
-                                                        <option key={paciente.idPaciente} value={paciente.idPaciente}>{paciente.idUsuarioNavigation.nome}</option>
-                                                    )
-                                                })
-                                            }
+                                                {
+                                                    this.state.listaPacientes.map( paciente => {
+                                                        return(
+                                                            <option key={paciente.idPaciente} value={paciente.idPaciente}>{paciente.idUsuarioNavigation.nome}</option>
+                                                        )
+                                                    })
+                                                }
 
-                                        </select>
-                                    </div>
-                                    <div className="caixa-texto">
-                                        <p>Dia</p>
-                                        <input
-                                            name='data'
-                                            type="date"
-                                            value={this.state.data}
-                                            onChange={this.atualizaStateCampo}
-                                        />
-                                    </div>
-                                    <div className="caixa-texto">
-                                        <p>Hora</p>
-                                        <input
-                                            name='hora'
-                                            type="time"
-                                            value={this.state.hora}
-                                            onChange={this.atualizaStateCampo}
-                                        />
-                                    </div>
-                                    <button type="submit">Cadastrar</button>
+                                            </select>
+                                        </div>
+                                        <div className="caixa-texto">
+                                            <p>Dia</p>
+                                            <input
+                                                name='data'
+                                                type="date"
+                                                value={this.state.data}
+                                                onChange={this.atualizaStateCampo}
+                                            />
+                                        </div>
+                                        <div className="caixa-texto">
+                                            <p>Hora</p>
+                                            <input
+                                                name='hora'
+                                                type="time"
+                                                value={this.state.hora}
+                                                onChange={this.atualizaStateCampo}
+                                            />
+                                        </div>
+                                        <button type="submit">Cadastrar</button>
                                 </form>
                             </div>
                         </div>

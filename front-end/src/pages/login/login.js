@@ -51,11 +51,11 @@ export default class Login extends Component{
                       break;
                     case "2":
                         //Caso seja médico força a página a ser redirecionada para a página de listagem
-                        this.props.history.push('/listarAdm')
+                        this.props.history.push('/listarMedico')
                       break;
                     case "3":
                         //Caso seja paciente força a página a ser redirecionada para a página home
-                        this.props.history.push('/')
+                        this.props.history.push('/listarPaciente')
                       break;
                     default:
                         break;
