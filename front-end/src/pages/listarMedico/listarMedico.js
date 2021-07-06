@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 import '../../assets/css/listagemMedico.css';
 
@@ -18,28 +19,24 @@ export default class ListarAdm extends Component{
 
     buscarConsultas = (x) => {
         
-        //Faz a chamada para a API
-        fetch('http://localhost:5000/api/Consulta/minhas', {
-            
-            //Define o corpo da requisição especificando o tipo ( JSON )
-            //Em outras palavras, converte o state para uma string JSON
-            body : JSON.stringify({ tituloTipoEvento : this.state.titulo }),
-
+        axios('http://localhost:5000/api/Consulta/minhasP', {
             headers : {
                 'Authorization' : 'Bearer ' + localStorage.getItem('login')
             }
         })
 
-        //Define que a resposta da requisição será em JSON
-        .then(resposta => resposta.json())
+        .then(resposta => {
+            // Caso a requisição retorne um status code 200
+            if (resposta.status === 200) {
+                // atualiza o state listaConsultas com os dados obtidos
+                this.setState({ listaConsultas : resposta.data })
+                // e mostra no console do navegador a lista de tipos eventos
+                console.log(this.state.listaConsultas)
+            }
+        })
+        // Caso ocorra algum erro, mostra no console do navegador
+        .catch(erro => console.log(erro));
 
-        //Atualiza o state listaConsultas com os dados obtidos
-        .then(dados => this.setState({ listaConsultas : dados }))
-
-        //Caso acorra algum erro, mostra ele no console do navegador
-        .catch((erro) => console.log(erro))
-
-        console.log(this.state.listaConsultas)
     }
 
     //Chama a função buscarConsultas() assim que o component é renderizado
@@ -58,7 +55,6 @@ export default class ListarAdm extends Component{
                         <h2>Consultas</h2>
                         <div className="dentro">
                             <div className="cima-info">
-
 
                                 {
                                     this.state.listaConsultas.map(consulta => {
@@ -93,6 +89,7 @@ export default class ListarAdm extends Component{
                                         )
                                     })
                                 }
+
                             </div>
                         </div>
                     </section>

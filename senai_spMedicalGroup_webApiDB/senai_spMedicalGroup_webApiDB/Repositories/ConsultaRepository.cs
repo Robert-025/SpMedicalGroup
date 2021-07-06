@@ -236,8 +236,30 @@ namespace senai_spMedicalGroup_webApiDB.Repositories
                     .Include(c => c.idMedicoNavigation.idEspecialidadeNavigation)
                     //Adiciona na busca as informações da clínica que o médico pertence
                     .Include(c => c.idMedicoNavigation.idClinicaNavigation)
+                    //Adiciona na busca as informações da situação da consulta
+                    .Include(c => c.idSituacaoNavigation)
                     //Estabelece como parâmetro de consulta o ID do usuario recebido
                     .Where(c => c.idPacienteNavigation.idUsuario == id)
+                    .ToList();
+        }
+
+        /// <summary>
+        /// Lista todas as consultas que um determinado usuario participa
+        /// </summary>
+        /// <param name="id">Id do usuario que participa das consultas listados</param>
+        /// <returns>Uma lista de consultas com os dados da consulta</returns>
+        public List<consulta> ListarMinhasMedicos(int id)
+        {
+            //Retorna uma lista com todas as informações das consultas
+            return ctx.consultas
+                    //Adiciona na busca as informações do paciente que fará a consulta
+                    .Include(c => c.idPacienteNavigation)
+                    //Adiciona na busca as informações da situação da consulta
+                    .Include(c => c.idSituacaoNavigation)
+                    //Adiciona na busca as informações da clínica que o médico pertence
+                    .Include(c => c.idMedicoNavigation.idClinicaNavigation)
+                    //Estabelece como parâmetro de consulta o ID do usuario recebido
+                    .Where(c => c.idMedicoNavigation.idUsuario == id)
                     .ToList();
         }
 

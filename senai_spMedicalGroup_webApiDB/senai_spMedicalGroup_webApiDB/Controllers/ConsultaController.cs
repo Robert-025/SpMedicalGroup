@@ -78,7 +78,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// </summary>
         /// <param name="novaConsulta">Objeto com as informações que serão cadastradas</param>
         /// <returns>Um status code 201 - Created</returns>
-        //[Authorize (Roles = "1")]
+        [Authorize (Roles = "1")]
         [HttpPost]
         public IActionResult Post(consulta novaConsulta)
         {
@@ -124,7 +124,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// </summary>
         /// <param name="id">ID da consulta que será deletada</param>
         /// <returns>Um status code 204 - NoContent</returns>
-        //[Authorize(Roles = "1")]
+        [Authorize(Roles = "1")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -147,9 +147,9 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// Lista todas as consultas de um usuario
         /// </summary>
         /// <returns>Uma lista de consultas com um status code 200 - OK</returns>
-        //[Authorize(Roles = "2, 3")]
-        [HttpGet("minhas")]
-        public IActionResult GetMinhas()
+        [Authorize(Roles = "3")]
+        [HttpGet("minhasP")]
+        public IActionResult GetMinhasPaciente()
         {
             try
             {
@@ -158,6 +158,32 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
 
                 // Retora a resposta da requisição 200 - OK fazendo a chamada para o método e trazendo a lista
                 return Ok(_consultaRepository.ListarMinhasPaciente(idUsuario));
+            }
+            catch (Exception ex)
+            {
+                //Retorna um status code 400 - BadRequest com a exception
+                return BadRequest(new { 
+                    mensagem = "Não é possível mostrar as consultas se o usuário não estiver logado!",
+                    ex
+                });
+            }
+        }
+
+        /// <summary>
+        /// Lista todas as consultas de um usuario
+        /// </summary>
+        /// <returns>Uma lista de consultas com um status code 200 - OK</returns>
+        [Authorize(Roles = "2")]
+        [HttpGet("minhasM")]
+        public IActionResult GetMinhasMedicos()
+        {
+            try
+            {
+                // Cria uma variável idUsuario que recebe o valor do ID do usuário que está logado
+                int idUsuario = Convert.ToInt32(HttpContext.User.Claims.First(c => c.Type == JwtRegisteredClaimNames.Jti).Value);
+
+                // Retora a resposta da requisição 200 - OK fazendo a chamada para o método e trazendo a lista
+                return Ok(_consultaRepository.ListarMinhasMedicos(idUsuario));
             }
             catch (Exception ex)
             {

@@ -19,6 +19,13 @@ namespace senai_spMedicalGroup_webApiDB.Interfaces
         List<consulta> ListarMinhasPaciente(int id);
 
         /// <summary>
+        /// Lista todas as consultas que um determinado usuario participa
+        /// </summary>
+        /// <param name="id">Id do usuario que participa das consultas listados</param>
+        /// <returns>Uma lista de consultas com os dados da consulta</returns>
+        List<consulta> ListarMinhasMedicos(int id);
+
+        /// <summary>
         /// Cria uma nova consulta
         /// </summary>
         /// <param name="consulta">Objeto com as informãções da consulta</param>

@@ -95,7 +95,13 @@
             <param name="id">ID da consulta que será deletada</param>
             <returns>Um status code 204 - NoContent</returns>
         </member>
-        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.GetMinhas">
+        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.GetMinhasPaciente">
+            <summary>
+            Lista todas as consultas de um usuario
+            </summary>
+            <returns>Uma lista de consultas com um status code 200 - OK</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Controllers.ConsultaController.GetMinhasMedicos">
             <summary>
             Lista todas as consultas de um usuario
             </summary>
@@ -470,6 +476,13 @@
             </summary>
         </member>
         <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.ListarMinhasPaciente(System.Int32)">
+            <summary>
+            Lista todas as consultas que um determinado usuario participa
+            </summary>
+            <param name="id">Id do usuario que participa das consultas listados</param>
+            <returns>Uma lista de consultas com os dados da consulta</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Interfaces.IConsultaRepository.ListarMinhasMedicos(System.Int32)">
             <summary>
             Lista todas as consultas que um determinado usuario participa
             </summary>
@@ -930,6 +943,13 @@
             <returns>Uma lista com as consultas</returns>
         </member>
         <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.ListarMinhasPaciente(System.Int32)">
+            <summary>
+            Lista todas as consultas que um determinado usuario participa
+            </summary>
+            <param name="id">Id do usuario que participa das consultas listados</param>
+            <returns>Uma lista de consultas com os dados da consulta</returns>
+        </member>
+        <member name="M:senai_spMedicalGroup_webApiDB.Repositories.ConsultaRepository.ListarMinhasMedicos(System.Int32)">
             <summary>
             Lista todas as consultas que um determinado usuario participa
             </summary>
