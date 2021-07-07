@@ -39,10 +39,18 @@ export default class ListarAdm extends Component{
     //Busca a consulta pelo ID da mesma e atualiza os states
     buscarConsultaPorId = (consulta) => {
 
-        this.setState({ idConsulta : consulta.idConsultaAlterada,
-                        descricao : consulta.descricaoAtualizada })
+        this.setState({ idConsulta : localStorage.setItem('descricao', consulta.idConsultaAlterada)}
 
-        localStorage.setItem('descricao', consulta)
+        , () => {
+            console.log(
+                // Exibe no console do navegador o valor do ID do Tipo de Evento recebido
+                'Consulta ' + consulta.idConsulta + ' foi selecionada, ',
+                // o valor do state idTipoEventoAlterado
+                'agora o valor do state idConsultaAlterada é: ' + this.state.idConsultaAlterada,
+                // e o valor do state titulo
+                'e o valor do state descricaoAtualizada é: ' + this.state.descricaoAtualizada
+            );
+        });
     }
 
     atualizarDescricao = (x) => {
@@ -116,7 +124,7 @@ export default class ListarAdm extends Component{
                                                     <div className="campo">
                                                         <p>{consulta.descricao}</p>
                                                     </div>
-                                                    <Link onClick={ () => this.buscarConsultaPorId(consulta) } to='/descricao'>Inserir descrição</Link>
+                                                    <Link onClick={ async () => this.buscarConsultaPorId(consulta) }  await to='/descricao'>Inserir descrição</Link>
                                                 </div>
                                                 <div className="situacao alinhando-centro">
                                                     <h3>Situação</h3>

@@ -31,41 +31,156 @@ export default class App extends Component{
     return(
       <View style={styles.main}>
 
-        {/* MAIN */}
+        {/* Cabeçalho */}
 
         <View style={styles.cabecalho}>
-          <Text style={styles.tituloCabecalho}>{"Consultas".toUpperCase()}</Text>
+          <Text style={styles.textoCabecalho}>{"Consultas".toUpperCase()}</Text>
         </View>
 
-        <View>
+        {/* CORPO */}
 
+        <View style={styles.corpo}>
+          <FlatList 
+            contentContainerStyle={styles.corpoContent}
+            data={this.state.listaConsultas}
+            keyExtractor={ item => item.idConsulta }
+            renderItem={this.renderItem}
+          />
         </View>
-
-      {/*  */}
-
       </View>
     )
   }
+
+  renderItem = ({ item }) => (
+    <View style={styles.flatItemContainer}>
+      <View style={styles.flatItemLinha}>
+        <View style={styles.flatItemPerfil}>
+          <Image 
+            source={require('./assets/img/perfil-de-usuario.png')}
+            style={styles.flatItemIcon}
+          />
+          <Text style={styles.flatItemTextoPerfil} >{item.idPacienteNavigation.idUsuarioNavigation.nome}</Text>
+        </View>
+        <View style={styles.flatItemData}>
+          <Image 
+              source={require('./assets/img/calendar.png')}
+              style={styles.flatItemIcon}
+            />
+          <Text style={styles.flatItemTextoData}>{Intl.DateTimeFormat('pt-BR').format(new Date(item.dataConsulta))}-{(item.dataConsulta).split('T')[1]}</Text>
+        </View>
+        <View style={styles.flatItemDescricao}>
+          <Image 
+            source={require('./assets/img/hastag.png')}
+            style={styles.flatItemIcon}
+          />
+          <Text style={styles.flatItemTextoDescricao}>{item.descricao}</Text>
+        </View>
+        <View style={styles.flatItemSituacao}>
+          <Text style={styles.flatItemTextoSituacao}>{item.idSituacaoNavigation.descricao}</Text>
+        </View>
+      </View>
+    </View>
+  )
 }
 
 const styles = StyleSheet.create({
+  //Tela inteira
   main: {
     flex: 1,
     backgroundColor: '#005ae6',
-    alignItems: 'center',
-    justifyContent: 'center',
   },
 
   cabecalho: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
 
-  tituloCabecalho: {
-    fontSize: 20,
-    justifyContent: 'center',
-    alignItems: 'center',
+  textoCabecalho: {
     color: '#fff',
+    fontSize: 20
+  },
+
+  corpo: {
+    flex: 5,
+    alignItems: 'center',
+    justifyContent: 'center'
+    // backgroundColor: '#f0f0f0'
+  },
+
+  //Dentro da lista
+  corpoContent: {
+    paddingLeft: 40,
+    paddingRight: 40,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+
+  flatItemContainer: {
+    flexDirection: 'row',
+    marginTop: 30,
+    paddingRight: 25,
+    paddingLeft: 25,
+    paddingTop: 10,
+    paddingBottom: 10,
+    backgroundColor: '#fff',
+    borderRadius: 25,
+  },
+
+  flatItemLinha: {
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+    justifyContent: 'space-around',
+  },
+
+  flatItemPerfil: {
+    fontSize: 12,
+    color: '#000',
+    flexDirection: 'row'
+  },
+  
+  flatItemData: {
+    fontSize: 12,
+    color: '#000',
+    flexDirection: 'row'
+  },
+
+  flatItemDescricao: {
+    fontSize: 12,
+    color: '#000',
+    flexDirection: 'row',
+  },
+  
+  flatItemSituacao: {
+    fontSize: 12,
+    color: '#000',
+    flexDirection: 'row'
+  },
+
+  flatItemTextoPerfil: {
+    marginTop: 7,
+    marginLeft: 5
+  },
+
+  flatItemTextoData: {
+    marginTop: 7,
+    marginLeft: 5
+  },
+
+  flatItemTextoDescricao: {
+    marginTop: 7,
+    marginLeft: 5
+  },
+
+  flatItemTextoSituacao: {
+    marginLeft: 50
+  },
+
+  flatItemIcon: {
+    marginRigth: 50,
+    width: 20,
+    height: 20,
+    marginTop: 7
   }
 });

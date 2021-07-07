@@ -230,8 +230,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         {
             try
             {
-                _consultaRepository.AprovarRecusar(id, descricao.descricao.ToString());
-
+                _consultaRepository.AddDescricao(id, descricao.descricao);
                 return StatusCode(204);
             }
             catch (Exception ex)

@@ -41,8 +41,6 @@ export default class Login extends Component{
                 //Define que a requisição terminou
                 this.setState({ isLoading : false })
 
-                console.log(parseJwt())
-
                 //Veridica o tipo de usuário que realizou o login
                 switch (parseJwt().Tipo) {
                     case "1":
