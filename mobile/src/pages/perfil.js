@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default class App extends Component{
+import api from './src/services/api';
 
+export default class App extends Component{
+  
   render(){
     return(
       <View style={styles.main}>
-        <Text>HomePage</Text>
+        <Text>Perfil</Text>
       </View>
     )
   }

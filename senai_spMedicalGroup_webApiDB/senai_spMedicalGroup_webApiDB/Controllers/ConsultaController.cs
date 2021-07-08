@@ -224,7 +224,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// <param name="id">ID da consulta que terá a descrição atualizada</param>
         /// <param name="descricao">Descrição da consulta</param>
         /// <returns>Um status code 204 - NoContent</returns>
-        //[Authorize(Roles = "2")]
+        [Authorize(Roles = "2")]
         [HttpPatch("{id}/descricao")]
         public IActionResult UpdateDesc(int id, consulta descricao)
         {
