@@ -1,5 +1,5 @@
 //Verifica se o usuário está logado
-export const usuarioAutenticado = () => localStorage.getItem('login') !== null; 
+export const usuarioAutenticado = () => localStorage.getItem('login') !== null;
 
 //Retorna o payload do usuário convertido em JSON
 export const parseJwt = () => {

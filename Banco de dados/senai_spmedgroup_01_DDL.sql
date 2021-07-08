@@ -1,7 +1,7 @@
-CREATE DATABASE SPMedicalGroup;
+CREATE DATABASE SPMedicalGroup2;
 GO
 
-USE SPMedicalGroup;
+USE SPMedicalGroup2;
 GO
 
 CREATE TABLE clinicas

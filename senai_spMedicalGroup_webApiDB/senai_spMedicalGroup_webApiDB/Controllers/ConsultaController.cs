@@ -147,7 +147,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// Lista todas as consultas de um usuario
         /// </summary>
         /// <returns>Uma lista de consultas com um status code 200 - OK</returns>
-        //[Authorize(Roles = "3")]
+        [Authorize(Roles = "3")]
         [HttpGet("minhasP")]
         public IActionResult GetMinhasPaciente()
         {
@@ -173,7 +173,7 @@ namespace senai_spMedicalGroup_webApiDB.Controllers
         /// Lista todas as consultas de um usuario
         /// </summary>
         /// <returns>Uma lista de consultas com um status code 200 - OK</returns>
-        //[Authorize(Roles = "2")]
+        [Authorize(Roles = "2")]
         [HttpGet("minhasM")]
         public IActionResult GetMinhasMedicos()
         {

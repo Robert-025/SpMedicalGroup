@@ -41,8 +41,10 @@ export default class Login extends Component{
                 //Define que a requisição terminou
                 this.setState({ isLoading : false })
 
+                console.log(parseJwt().Tipo)
+
                 //Veridica o tipo de usuário que realizou o login
-                switch (parseJwt().Tipo) {
+                switch (parseJwt().Tipo){
                     case "1":
                         //Caso seja adm força a página a ser redirecionada para a página de cadastro
                         this.props.history.push('/cadastro')
@@ -55,8 +57,9 @@ export default class Login extends Component{
                         //Caso seja paciente força a página a ser redirecionada para a página home
                         this.props.history.push('/listarPaciente')
                       break;
-                    default:
-                        break;
+                    default:  
+                        this.props.history.push('/')
+                      break;
                 }
             }
         })

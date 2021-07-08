@@ -122,7 +122,7 @@ footer{
     margin-bottom: 60px;
 }
 
-.informacoes button{
+.informacoes-paciente button{
     height: 85px;
     width: 465px;
     background-color: #005AE6;
@@ -177,17 +177,6 @@ footer{
 .campo{
     width: 90%;
     height: 30px;
-    background-color: #fff;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
-.descricao div{
-    width: 90%;
-    height: 150px;
     background-color: #fff;
     border-radius: 20px;
     display: flex;

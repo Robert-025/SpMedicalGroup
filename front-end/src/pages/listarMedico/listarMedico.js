@@ -78,12 +78,21 @@ export default class ListarAdm extends Component{
         //Atualiza o state listaConsultas com os dados obtidos
         .then(dados => this.setState({ listaConsultas : dados }))
 
+        .then(this.buscarConsultas)
+
         //Caso acorra algum erro, mostra ele no console do navegador
         .catch((erro) => console.log(erro))
 
         console.log(this.state.listaConsultas)
 
-        .then(this.buscarConsultas)
+
+    }
+
+    atualizarEstadoDescricao = async (event) => {
+
+        await this.setState({
+            [event.target.name] : event.target.value, idConsultaAlterada : event.target.id
+        })
     }
 
     //Chama a função buscarConsultas() assim que o component é renderizado
@@ -119,13 +128,20 @@ export default class ListarAdm extends Component{
                                                         <p>{Intl.DateTimeFormat("pt-BR").format(new Date(consulta.dataConsulta))} {(consulta.dataConsulta).split('T')[1]}</p>
                                                     </div>
                                                 </div>
-                                                <div className="descricao alinhando-centro">
+                                                <form onSubmit={this.atualizarDescricao} className="descricao alinhando-centro">
                                                     <h3>Descrição</h3>
-                                                    <div className="campo">
-                                                        <p>{consulta.descricao}</p>
+                                                    <div>
+                                                        <textarea 
+                                                            className="campo"
+                                                            onChange={this.atualizarEstadoDescricao}
+                                                            id={consulta.idConsulta}
+                                                            name="descricaoAtualizada"
+                                                            row="2"
+                                                        >
+                                                        {consulta.descricao}</textarea>
                                                     </div>
-                                                    <Link onClick={ async () => this.buscarConsultaPorId(consulta) }  await to='/descricao'>Inserir descrição</Link>
-                                                </div>
+                                                    <button type="submit">Atualizar descrição</button>
+                                                </form>
                                                 <div className="situacao alinhando-centro">
                                                     <h3>Situação</h3>
                                                     <div className="campo">

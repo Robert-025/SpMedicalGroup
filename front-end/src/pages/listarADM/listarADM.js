@@ -32,6 +32,20 @@ export default class ListarAdm extends Component{
         console.log(this.state.listaConsultas)
     }
 
+    // //Função genérica que atualiza o state de acordo com o input, pode ser ultilizada em vários inputs diferentes
+    // atualizaStateCampo = (x) =>
+    // {
+    //     this.setState({ [x.target.name] : x.target.value })
+    // }
+
+    atualizarEstadoDescricao = async (event) => {
+        await this.setState({
+            [event.target.name] : event.target.value, idConsultaAlterada : event.target.id
+        })
+
+        this.limparCampos()
+    }
+
     //Chama a função buscarConsultas() assim que o component é renderizado
     componentDidMount(){
         this.buscarConsultas();
@@ -87,9 +101,9 @@ export default class ListarAdm extends Component{
                                 }
                             </div>
                         </div>
-                        {/* <Link to='/cadastro'>
+                        <Link to='/cadastro'>
                         <button type="submit">Cadastrar nova consulta</button>
-                        </Link> */}
+                        </Link>
                     </section>
                 </main>
                 <Footer />
@@ -97,3 +111,5 @@ export default class ListarAdm extends Component{
         )
     }
 } 
+
+// textarea readOnly={parseJwt().role === '3' ? 'none' : ''} onChange={this.atualizarEstadoDescricao} id={consulta.idConsulta} name="descricao" rows="3" className="consultas-card-descricao-campo">{consulta.descricao}</textarea>

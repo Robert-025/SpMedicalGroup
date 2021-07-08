@@ -15,41 +15,57 @@ import Login from './pages/login/login';
 import Descricao from './pages/descricao/descricao'
 
 import reportWebVitals from './reportWebVitals';
-import { parse } from 'json5';
 
-const PermissaoAdm = ({ component : Component }) => {
+const PermissaoAdm = ({ component : Component  }) => (
   <Route 
-    render = {props => 
-      //Verifica se o usuário está logado e se ele é ADM
-      usuarioAutenticado() && parseJwt.Role === "1" ? 
-      //Se sim, renderiza de acordo com a rota solicitada e permitida
-      <Component {...props}/> :
-      //Se não, redireciona para login
-      <Redirect to='login' /> 
+    render = { props =>
+      // Verifica se o usuário está logado e se é Administrador
+      usuarioAutenticado() && parseJwt().Tipo === "1" ? 
+      // Se sim, renderiza de acordo com a rota solicitada e permitida
+      <Component {...props} /> : 
+      // Se não, redireciona para a página de login
+      <Redirect to = '/login' />
     }
   />
-}
+);
 
-const PermissaoPaciente = () => {
-  <Route
-    render = {props => 
-      usuarioAutenticado() && parseJwt.Role === "2" ?
-      <Component {...props} /> : <Redirect to='login' />
+const PermissaoMedico = ({ component : Component  }) => (
+  <Route 
+    render = { props =>
+      // Verifica se o usuário está logado e se é Medico
+      usuarioAutenticado() && parseJwt().Tipo === "2" ? 
+      // Se sim, renderiza de acordo com a rota solicitada e permitida
+      <Component {...props} /> : 
+      // Se não, redireciona para a página de login
+      <Redirect to = '/login' />
     }
   />
-}
+);
+
+const PermissaoPaciente = ({ component : Component  }) => (
+  <Route 
+    render = { props =>
+      // Verifica se o usuário está logado e se é Paciente
+      usuarioAutenticado() && parseJwt().Tipo === "3" ? 
+      // Se sim, renderiza de acordo com a rota solicitada e permitida
+      <Component {...props} /> : 
+      // Se não, redireciona para a página de login
+      <Redirect to = '/login' />
+    }
+  />
+);
 
 const routing = (
   <Router>
     <div>
       <Switch>
         <Route exact path="/" component={App} />
-        <Route path="/listarAdm" component={listarAdm} />
-        <Route path="/listarMedico" component={listarMedico} />
-        <Route path="/listarPaciente" component={listarPaciente} />
-        <Route  path="/cadastro" component={Cadastrar} />
+        <PermissaoAdm path="/listarAdm" component={listarAdm} />
+        <PermissaoMedico path="/listarMedico" component={listarMedico} />
+        <PermissaoPaciente path="/listarPaciente" component={listarPaciente} />
+        <PermissaoAdm  path="/cadastro" component={Cadastrar} />
         <Route path="/login" component={Login} />
-        <Route path="/descricao" component={Descricao} />
+        <PermissaoAdm path="/descricao" component={Descricao} />
         <Redirect to="/notFound" component={NotFound} />
         <Route path="/notFound" component={NotFound} />
       </Switch>

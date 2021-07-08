@@ -185,17 +185,6 @@ footer{
     text-align: center;
 }
 
-.descricao div{
-    width: 90%;
-    height: 150px;
-    background-color: #fff;
-    border-radius: 20px;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    text-align: center;
-}
-
 .esquerdo-footer{
     width: 20%;
     height: 100%;

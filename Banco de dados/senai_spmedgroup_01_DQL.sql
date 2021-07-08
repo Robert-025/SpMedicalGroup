@@ -1,4 +1,4 @@
-USE SPMedicalGroup;
+USE SPMedicalGroup2;
 
 -- Seleciona todas as clínicas
 SELECT * FROM clinicas;
