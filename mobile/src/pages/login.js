@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import api from './src/services/api';
+import api from '../services/api';
 
 export default class App extends Component{
   

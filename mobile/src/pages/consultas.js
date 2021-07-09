@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 
-import api from './src/services/api';
+import api from '../services/api';
 
 export default class Consultas extends Component{
   constructor(props){
@@ -56,21 +56,21 @@ export default class Consultas extends Component{
       <View style={styles.flatItemLinha}>
         <View style={styles.flatItemPerfil}>
           <Image 
-            source={require('./assets/img/perfil-de-usuario.png')}
+            source={require('../../assets/img/perfil-de-usuario.png')}
             style={styles.flatItemIcon}
           />
           <Text style={styles.flatItemTextoPerfil} >{item.idPacienteNavigation.idUsuarioNavigation.nome}</Text>
         </View>
         <View style={styles.flatItemData}>
           <Image 
-              source={require('./assets/img/calendar.png')}
+              source={require('../../assets/img/calendar.png')}
               style={styles.flatItemIcon}
             />
           <Text style={styles.flatItemTextoData}>{Intl.DateTimeFormat('pt-BR').format(new Date(item.dataConsulta))}-{(item.dataConsulta).split('T')[1]}</Text>
         </View>
         <View style={styles.flatItemDescricao}>
           <Image 
-            source={require('./assets/img/hastag.png')}
+            source={require('../../assets/img/hastag.png')}
             style={styles.flatItemIcon}
           />
           <Text style={styles.flatItemTextoDescricao}>{item.descricao}</Text>
