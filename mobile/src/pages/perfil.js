@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import api from '../services/api';
 
-export default class App extends Component{
+export default class Perfil extends Component{
   
   render(){
     return(
