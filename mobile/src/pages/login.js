@@ -13,8 +13,29 @@ export default class Login extends Component{
     }
   }
 
-  realizarLogin = () => {
-    this.props.navigation.navigate('Main')
+  realizarLogin = async () => {
+
+    try {
+      //Armazena a resposta da API e passa o email e senha
+      const resposta = await api.post('/Login', {
+        email : this.state.email,
+        senha : this.state.senha
+      });
+
+      //Pega o token pela resposta da API 
+      const token = resposta.data.token
+
+      //Armazena no asyncStorage o token recebido na constante acima
+      await AsyncStorage.setItem('token', token)
+      
+      if (resposta.status === 200) {
+        this.props.navigation.navigate('Main')
+      }
+    
+    } 
+    catch (Exception) {
+      console.warn(Exception)
+    }
   }
   
   render(){
@@ -35,12 +56,14 @@ export default class Login extends Component{
             placeholderTextColor='#808080'
             keyboardType='email-address'
             color='#000'
+            onChangeText={ email => this.setState({ email })}
           />
 
           <TextInput 
             style={styles.inputLogin}
             placeholder='Senha'
             placeholderTextColor='#808080'
+            //Para aparecer aquelas bolinhas no campo de seha
             secureTextEntry={true}
             color='#000'
             onChangeText={ senha => this.setState({ senha })}
@@ -113,6 +136,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     width: 250,
     height: 40,
-    borderRadius: 20
+    borderRadius: 20,
   }
 });
