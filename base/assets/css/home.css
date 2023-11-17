@@ -24,14 +24,9 @@ footer{
     font-size: 18px;
 }
 
-main{
+.main-home{
     width: 100%;
-    height: 1533px;
-    background-image: url("./img/Doctors-fundo.png");
-    background-repeat: no-repeat;
-    background-position: center;
-    display: flex;
-    justify-content: center;
+    height: 1700px;
     align-items: center;
 }
 
@@ -102,7 +97,69 @@ main{
     align-items: center;
 }
 
+.banner{
+    height: 780px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
+.foto{
+    height: 100%;
+    width: auto;
+}
+
+.mensagem{
+    height: 100%;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 24px;
+    font-family: 'Sanchez', serif;
+}
+
+.marcar-consulta{
+    width: 100%;
+    height: 750px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 60px;
+}
+
+.marcar-consulta h2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 48px;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+
+.localizacao{
+    width: 1280px;
+    height: 480px;
+    /*background-color: aqua;*/
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-local{
+    width: 45%;
+    height: 480px;
+    background-color: #005AE6;
+    display: grid;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 34px;
+    font-family: sans-serif ;
+    text-align: left;
+}
 
 .esquerdo-footer{
     width: 20%;
